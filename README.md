@@ -31,7 +31,7 @@
 
 ### Arch
 
-Got you covered. Just clone this repo and run `spice_it_up.sh` on a fresh Arch install to get the exact same thing as me. It should theoretically work on a non-fresh install, but I did not test that out.
+Got you covered. Just clone this repo (including its submodules => `git clone --recurse-submodules https://github.com/PlankCipher/dotfiles)` and run `spice_it_up.sh` on a fresh Arch install to get the exact same thing as me. It should theoretically work on a non-fresh install, but I did not test that out.
 
 > **Note**: You may want to take a look at the script first.
 
