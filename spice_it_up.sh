@@ -1,0 +1,173 @@
+#!/bin/sh
+
+SCRIPT_DIR=$(pwd)
+
+setup () {
+  sudo pacman -Syu git base-devel make qt5-tools qt5-base gcc wget clang
+}
+
+install_yay () {
+  sudo git clone https://aur.archlinux.org/yay-git.git /opt/yay-git
+  sudo chown -R $(whoami):$(whoami) /opt/yay-git
+  cd /opt/yay-git
+  makepkg -si
+  cd $SCRIPT_DIR
+}
+
+install_polybar () {
+  # Required to install ttf-unifont
+  mkdir -p $HOME/.gnupg
+  echo "keyserver hkps://keyserver.ubuntu.com" >> $HOME/.gnupg/gpg.conf
+
+  sudo pacman -S vnstat
+  sudo systemctl enable vnstat
+
+  yay -S polybar siji-git ttf-unifont noto-fonts-emoji
+
+  sudo mkdir -p /usr/share/fonts/opentype/
+  sudo cp $SCRIPT_DIR/fontawesome/* /usr/share/fonts/opentype/
+}
+
+install_et () {
+  sudo pacman -S tre
+
+  mkdir -p $HOME/Downloads
+  git clone https://github.com/PlankCipher/et.git $HOME/Downloads/et
+  cd $HOME/Downloads/et
+  ./install.sh
+  cd $SCRIPT_DIR
+  rm -rf $HOME/Downloads/et
+}
+
+install_main_ui_dependencies () {
+  yay -S xorg xorg-server xorg-xinit xorg-setxkbmap xorg-xmodmap xf86-video-intel xf86-input-libinput xclip xwinwrap
+
+  yay -S i3-gaps picom-ibhagwan-git rofi rofi-wifi-menu-git rofi-emoji rofi-greenclip rofi-calc ly xautolock unclutter brightnessctl pulseaudio alsa alsa-utils pavucontrol dunst libnotify gnome-themes-extra bibata-cursor-theme-bin gifsicle iw
+
+  install_polybar
+  install_et
+}
+
+install_neovim () {
+  yay -S neovim fzf ripgrep the_silver_searcher fd
+
+  ## Install vim-plug
+  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+  pip install jedi
+
+  ## Install Hack Nerd Font
+  mkdir -p $HOME/Downloads/Compressed/
+  curl -Lo $HOME/Downloads/Compressed/hack_nerd_font.zip 'https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.zip'
+  sudo unzip $HOME/Downloads/Compressed/hack_nerd_font.zip -d /usr/share/fonts/TTF/
+  rm -rf $HOME/Downloads/Compressed
+}
+
+install_mpd () {
+  yay -S mpd mpc ncmpcpp
+
+  # Add mpd to required groups
+  sudo gpasswd -a mpd $(whoami)
+  chmod 710 $HOME/
+  sudo gpasswd -a mpd audio
+}
+
+install_ranger () {
+  yay -S ranger
+
+  # Install The Great of All Time: Mighty Dragon
+  git clone https://github.com/mwh/dragon.git $HOME/Downloads/dragon
+  cd $HOME/Downloads/dragon/
+  sudo make install
+  sudo chmod +x dragon
+  sudo mv dragon /sbin/dragon
+  cd $SCRIPT_DIR
+  rm -rf $HOME/Downloads/dragon
+
+  # Install ranger_devicons plugin
+  git clone https://github.com/alexanderjeurissen/ranger_devicons $HOME/.config/ranger/plugins/ranger_devicons
+}
+
+install_zsh_and_ohmyzsh () {
+  yay -S zsh
+
+  # Change default shell to ZSH
+  chsh -s /usr/bin/zsh
+
+  # Install oh-my-zsh
+  sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
+
+  cp $SCRIPT_DIR/zsh/steeef.zsh-theme $HOME/.oh-my-zsh/themes/steeef.zsh-theme
+
+  # Install zsh-autosuggestions plugin
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+}
+
+install_dev_stuff () {
+  # NodeJS, NPM, and YARN
+  sudo pacman -S nodejs npm
+
+  sudo npm config set init-license GPL-3.0-only -g
+  sudo npm config set init-author-name PlankCipher -g
+
+  sudo npm install yarn -g
+  yarn global add eslint-cli create-react-app
+
+  # Install Heroku CLI
+  curl https://cli-assets.heroku.com/install.sh | sh
+
+  ## Install XAMPP
+  yay -S gksu
+  wget https://www.apachefriends.org/xampp-files/8.0.3/xampp-linux-x64-8.0.3-0-installer.run -O $HOME/Downloads/xampp_linux_installer.run
+  chmod +x $HOME/Downloads/xampp_linux_installer.run
+  sudo $HOME/Downloads/xampp_linux_installer.run --mode text
+  rm -rf $HOME/Downloads/xampp_linux_installer.run
+
+  # Create main dev directories
+  mkdir -p $HOME/chamber_of_magic/junk/ $HOME/chamber_of_magic/test/
+
+  # Other debugging programs
+  yay -S insomnia-bin
+}
+
+install_other_dependencies () {
+  yay -S scrot feh vlc zathura zathura-pdf-mupdf alacritty ueberzug brave-bin python-pip python zip unzip bat discord freetube-bin franz-bin telegram-desktop
+
+  # Thunderbird
+  sudo pacman -S thunderbird
+
+  # Todoist
+  sudo mkdir -p /opt/todoist/
+  sudo wget https://todoist.com/linux_app/appimage -O /opt/todoist/todoist.AppImage
+  sudo chmod +x /opt/todoist/todoist.AppImage
+
+  install_neovim
+  install_mpd
+  install_ranger
+  install_zsh_and_ohmyzsh
+  install_dev_stuff
+}
+
+copy_files_and_create_dirs () {
+  cp -r $SCRIPT_DIR/.config $SCRIPT_DIR/.scripts $SCRIPT_DIR/.zprofile $SCRIPT_DIR/.Xresources $SCRIPT_DIR/.xprofile $SCRIPT_DIR/.icons $HOME/
+  mkdir -p $HOME/Downloads/Music
+  mkdir -p $HOME/.local/share/zsh
+  touch $HOME/.local/share/zsh/history
+  sudo cp $SCRIPT_DIR/config.ini /etc/ly/config.ini
+  sudo cp $SCRIPT_DIR/40-libinput.conf /usr/share/X11/xorg.conf.d/
+  sudo cp $SCRIPT_DIR/index.theme /usr/share/icons/default/
+}
+
+finalize () {
+  sudo systemctl enable ly
+
+  echo "Welcome home!"
+  exit 0
+}
+
+setup
+install_yay
+install_main_ui_dependencies
+install_other_dependencies
+copy_files_and_create_dirs
+finalize
