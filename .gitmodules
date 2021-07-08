@@ -7,3 +7,6 @@
 [submodule "suckless/dmenu"]
 	path = suckless/dmenu
 	url = https://github.com/PlankCipher/dmenu.git
+[submodule "suckless/st"]
+	path = suckless/st
+	url = https://github.com/PlankCipher/st.git
