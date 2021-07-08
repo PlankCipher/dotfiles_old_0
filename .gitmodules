@@ -4,3 +4,6 @@
 [submodule "suckless/dwmblocks"]
 	path = suckless/dwmblocks
 	url = https://github.com/PlankCipher/dwmblocks.git
+[submodule "suckless/dmenu"]
+	path = suckless/dmenu
+	url = https://github.com/PlankCipher/dmenu.git
