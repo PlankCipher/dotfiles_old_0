@@ -1,0 +1,3 @@
+[submodule "suckless/dwm"]
+	path = suckless/dwm
+	url = https://github.com/PlankCipher/dwm.git
