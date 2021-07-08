@@ -14,7 +14,7 @@ install_yay () {
   cd $SCRIPT_DIR
 }
 
-install_polybar () {
+install_stuff_for_dwmblocks () {
   # Required to install ttf-unifont
   mkdir -p $HOME/.gnupg
   echo "keyserver hkps://keyserver.ubuntu.com" >> $HOME/.gnupg/gpg.conf
@@ -22,10 +22,33 @@ install_polybar () {
   sudo pacman -S vnstat
   sudo systemctl enable vnstat
 
-  yay -S polybar siji-git ttf-unifont noto-fonts-emoji
+  yay -S ttf-unifont noto-fonts-emoji sysstat libqalculate bc
 
   sudo mkdir -p /usr/share/fonts/opentype/
   sudo cp $SCRIPT_DIR/fontawesome/* /usr/share/fonts/opentype/
+}
+
+install_suckless_stuff () {
+  # DWM
+  cd $SCRIPT_DIR/suckless/dwm
+  sudo make clean install
+  cd $SCRIPT_DIR
+
+  # DWMBLOCKS
+  cd $SCRIPT_DIR/suckless/dwmblocks
+  sudo make clean install
+  cd $SCRIPT_DIR
+  install_stuff_for_dwmblocks
+
+  # DMENU
+  cd $SCRIPT_DIR/suckless/dmenu
+  sudo make clean install
+  cd $SCRIPT_DIR
+
+  # ST
+  cd $SCRIPT_DIR/suckless/st
+  sudo make clean install
+  cd $SCRIPT_DIR
 }
 
 install_et () {
@@ -42,9 +65,9 @@ install_et () {
 install_main_ui_dependencies () {
   yay -S xorg xorg-server xorg-xinit xorg-setxkbmap xorg-xmodmap xf86-video-intel xf86-input-libinput xclip xwinwrap
 
-  yay -S i3-gaps picom-ibhagwan-git rofi rofi-wifi-menu-git rofi-emoji rofi-greenclip rofi-calc ly xautolock unclutter brightnessctl pulseaudio alsa alsa-utils pavucontrol dunst libnotify gnome-themes-extra bibata-cursor-theme-bin gifsicle iw
+  yay -S picom-ibhagwan-git rofi-greenclip xautolock unclutter brightnessctl pulseaudio alsa alsa-utils pavucontrol dunst libnotify gnome-themes-extra bibata-cursor-theme-bin iw
 
-  install_polybar
+  install_suckless_stuff
   install_et
 }
 
@@ -131,7 +154,7 @@ install_dev_stuff () {
 }
 
 install_other_dependencies () {
-  yay -S scrot feh vlc zathura zathura-pdf-mupdf alacritty ueberzug brave-bin python-pip python zip unzip bat discord freetube-bin franz-bin telegram-desktop
+  yay -S scrot feh vlc zathura zathura-pdf-mupdf ueberzug brave-bin python-pip python zip unzip bat discord freetube-bin franz-bin telegram-desktop
 
   # Thunderbird
   sudo pacman -S thunderbird
@@ -149,20 +172,12 @@ install_other_dependencies () {
 }
 
 copy_files_and_create_dirs () {
-  cp -r $SCRIPT_DIR/.config $SCRIPT_DIR/.scripts $SCRIPT_DIR/.zprofile $SCRIPT_DIR/.Xresources $SCRIPT_DIR/.xprofile $SCRIPT_DIR/.icons $HOME/
+  cp -r $SCRIPT_DIR/.config $SCRIPT_DIR/.scripts $SCRIPT_DIR/.zprofile $SCRIPT_DIR/.Xresources $SCRIPT_DIR/.xinitrc $SCRIPT_DIR/.icons $HOME/
   mkdir -p $HOME/Downloads/Music
   mkdir -p $HOME/.local/share/zsh
   touch $HOME/.local/share/zsh/history
-  sudo cp $SCRIPT_DIR/config.ini /etc/ly/config.ini
   sudo cp $SCRIPT_DIR/40-libinput.conf /usr/share/X11/xorg.conf.d/
   sudo cp $SCRIPT_DIR/index.theme /usr/share/icons/default/
-}
-
-finalize () {
-  sudo systemctl enable ly
-
-  echo "Welcome home!"
-  exit 0
 }
 
 setup
@@ -170,4 +185,12 @@ install_yay
 install_main_ui_dependencies
 install_other_dependencies
 copy_files_and_create_dirs
-finalize
+
+cat << EOF
+__        __   _                            _                          _
+\ \      / /__| | ___ ___  _ __ ___   ___  | |__   ___  _ __ ___   ___| |
+ \ \ /\ / / _ \ |/ __/ _ \| '_ \` _ \ / _ \ | '_ \ / _ \| '_ \` _ \ / _ \ |
+  \ V  V /  __/ | (_| (_) | | | | | |  __/ | | | | (_) | | | | | |  __/_|
+   \_/\_/ \___|_|\___\___/|_| |_| |_|\___| |_| |_|\___/|_| |_| |_|\___(_)
+EOF
+exit 0
