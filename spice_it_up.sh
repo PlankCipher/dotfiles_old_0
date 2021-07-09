@@ -26,6 +26,8 @@ install_stuff_for_dwmblocks () {
 
   sudo mkdir -p /usr/share/fonts/opentype/
   sudo cp $SCRIPT_DIR/fontawesome/* /usr/share/fonts/opentype/
+
+  sed -i "s/\/home\/testninja/\/home\/$(whoami)/" $SCRIPT_DIR/suckless/dwmblocks/config.def.h
 }
 
 install_suckless_stuff () {
@@ -35,10 +37,10 @@ install_suckless_stuff () {
   cd $SCRIPT_DIR
 
   # DWMBLOCKS
+  install_stuff_for_dwmblocks
   cd $SCRIPT_DIR/suckless/dwmblocks
   sudo make clean install
   cd $SCRIPT_DIR
-  install_stuff_for_dwmblocks
 
   # DMENU
   cd $SCRIPT_DIR/suckless/dmenu
@@ -66,6 +68,8 @@ install_main_ui_dependencies () {
   yay -S xorg xorg-server xorg-xinit xorg-setxkbmap xorg-xmodmap xf86-video-intel xf86-input-libinput xclip
 
   yay -S picom-ibhagwan-git rofi-greenclip xautolock unclutter brightnessctl pulseaudio alsa alsa-utils pavucontrol dunst libnotify gnome-themes-extra bibata-cursor-theme-bin iw
+
+  sed -i "s/\/home\/testninja/\/home\/$(whoami)/" $SCRIPT_DIR/.config/greenclip.toml
 
   install_suckless_stuff
   install_et
