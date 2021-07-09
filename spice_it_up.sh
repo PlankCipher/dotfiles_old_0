@@ -63,7 +63,7 @@ install_et () {
 }
 
 install_main_ui_dependencies () {
-  yay -S xorg xorg-server xorg-xinit xorg-setxkbmap xorg-xmodmap xf86-video-intel xf86-input-libinput xclip xwinwrap
+  yay -S xorg xorg-server xorg-xinit xorg-setxkbmap xorg-xmodmap xf86-video-intel xf86-input-libinput xclip
 
   yay -S picom-ibhagwan-git rofi-greenclip xautolock unclutter brightnessctl pulseaudio alsa alsa-utils pavucontrol dunst libnotify gnome-themes-extra bibata-cursor-theme-bin iw
 
@@ -140,7 +140,6 @@ install_dev_stuff () {
   curl https://cli-assets.heroku.com/install.sh | sh
 
   ## Install XAMPP
-  yay -S gksu
   wget https://www.apachefriends.org/xampp-files/8.0.3/xampp-linux-x64-8.0.3-0-installer.run -O $HOME/Downloads/xampp_linux_installer.run
   chmod +x $HOME/Downloads/xampp_linux_installer.run
   sudo $HOME/Downloads/xampp_linux_installer.run --mode text
@@ -154,7 +153,7 @@ install_dev_stuff () {
 }
 
 install_other_dependencies () {
-  yay -S scrot feh vlc zathura zathura-pdf-mupdf ueberzug brave-bin python-pip python zip unzip bat discord freetube-bin franz-bin telegram-desktop libxft-bgra imagemagick i3lock
+  yay -S scrot feh vlc zathura zathura-pdf-mupdf ueberzug brave-bin python-pip python zip unzip bat discord freetube-bin franz-bin telegram-desktop libxft-bgra imagemagick i3lock fuse
 
   # Thunderbird
   sudo pacman -S thunderbird
@@ -187,10 +186,10 @@ install_other_dependencies
 copy_files_and_create_dirs
 
 cat << EOF
-__        __   _                            _                          _
-\ \      / /__| | ___ ___  _ __ ___   ___  | |__   ___  _ __ ___   ___| |
- \ \ /\ / / _ \ |/ __/ _ \| '_ \` _ \ / _ \ | '_ \ / _ \| '_ \` _ \ / _ \ |
-  \ V  V /  __/ | (_| (_) | | | | | |  __/ | | | | (_) | | | | | |  __/_|
-   \_/\_/ \___|_|\___\___/|_| |_| |_|\___| |_| |_|\___/|_| |_| |_|\___(_)
+__        __   _                               _                          _
+\ \      / /__| | ___ ___  _ __ ___   ___     | |__   ___  _ __ ___   ___| |
+ \ \ /\ / / _ \ |/ __/ _ \| '_ \` _ \ / _ \    | '_ \ / _ \| '_ \` _ \ / _ \ |
+  \ V  V /  __/ | (_| (_) | | | | | |  __/    | | | | (_) | | | | | |  __/_|
+   \_/\_/ \___|_|\___\___/|_| |_| |_|\___|    |_| |_|\___/|_| |_| |_|\___(_)
 EOF
 exit 0
