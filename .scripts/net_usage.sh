@@ -12,8 +12,8 @@ VNSTAT_TIMESTAMP=$(vnstat -i $INTERFACE --oneline | awk -F\; '{ print $3 }')
 OUTPUT=""
 
 if [[ $TODAY_TIMESTAMP == $VNSTAT_TIMESTAMP ]]; then
-  RX=$(vnstat -i $INTERFACE --oneline | awk -F\; '{ print $4 }')
-  TX=$(vnstat -i $INTERFACE --oneline | awk -F\; '{ print $5 }')
+  RX=$(vnstat -i $INTERFACE --oneline | awk -F\; '{ print $4 }' | sed -E 's/ //; s/iB//')
+  TX=$(vnstat -i $INTERFACE --oneline | awk -F\; '{ print $5 }' | sed -E 's/ //; s/iB//')
   OUTPUT=" $RX  $TX"
 else
   OUTPUT="N/A"
