@@ -1,6 +1,6 @@
 #!/bin/sh
 
-BATTERY=$(cat /sys/class/power_supply/BAT0/capacity)
+BATTERY=$(cat /sys/class/power_supply/BAT1/capacity)
 
 ICON=''
 if [[ $BATTERY -gt 74 ]]; then

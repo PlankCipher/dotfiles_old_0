@@ -73,7 +73,7 @@ In all what follows:
 | $MODIFIER_MOD+plus          | Increase volume by 5%                                |
 | $MODIFIER_MOD+minus         | Decrease volume by 5%                                |
 | $MODIFIER_MOD+0             | Toggle volume                                        |
-| $MODIFIER_MOD+Shift+0       | Toggle mic                                           |
+| $MODIFIER_MOD+rightbracket  | Toggle mic                                           |
 | $MODIFIER_MOD+g             | Clear greenclip history (clipboard)                  |
 | $MODIFIER_MOD+less          | Play previous song                                   |
 | $MODIFIER_MOD+quotedbl      | Toggle songs                                         |

@@ -1,9 +1,10 @@
 #!/bin/sh
 
 get_volume () {
-  INFO=$(pacmd list-sinks | grep "state\: RUNNING" -B4 -A7 | grep "volume: \(front\|mono\)\|muted:")
-  VOL=$(echo "$INFO" | grep -o "[0-9]*%" | head -1 | sed 's/%//')
-  MUTED=$(echo "$INFO" | awk '/muted:/ { print $2 }')
+  DEFAULT_SINK_NAME=$(pacmd stat | sed '/Default sink name/ !d' | awk '{ print $4 }')
+  INFO=$(pacmd list-sinks | sed -E "/name: <$DEFAULT_SINK_NAME>/,/muted:/ !d; /(^\s*volume:)|(^\s*muted:)/ !d")
+  VOL=$(echo "$INFO" | awk '{ print $5 }' | sed 's/%//')
+  MUTED=$(echo "$INFO" | awk 'NR==2 { print $2 }')
 
   ICON=''
   TEXT=''
@@ -22,7 +23,7 @@ get_volume () {
     TEXT="$VOL%"
   fi
 
-  echo -e "\x0d$ICON\x0b $VOL"
+  echo -e "\x0d$ICON\x0b $TEXT"
 }
 
 case $1 in
