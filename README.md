@@ -8,8 +8,6 @@
 
 ![lock_screen](./images/lock_screen.png)
 
-![Workspace_2](./images/workspace_2.png)
-
 ![Neovim_dashbaord](./images/nvim_dashboard.png)
 
 ![Neovim_installation_script](./images/nvim_installation_script.png)
