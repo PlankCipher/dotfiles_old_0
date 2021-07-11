@@ -18,7 +18,7 @@ fi
 POSITION=1
 mpc listall | while read -r SONG; do
   if [[ "$SONG" == "$NEXT_SONG" ]]; then
-    mpc play $POSITION
+    mpc play $POSITION && sigdwmblocks 6
     break
   else
     POSITION=$((POSITION + 1))
