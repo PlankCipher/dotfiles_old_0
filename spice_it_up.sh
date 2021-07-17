@@ -54,7 +54,7 @@ install_suckless_stuff () {
 }
 
 install_et () {
-  sudo pacman -S tre
+  sudo pacman -S tre sox
 
   mkdir -p $HOME/Downloads
   git clone https://github.com/PlankCipher/et.git $HOME/Downloads/et
