@@ -162,11 +162,6 @@ install_other_dependencies () {
   # Thunderbird
   sudo pacman -S thunderbird
 
-  # Todoist
-  sudo mkdir -p /opt/todoist/
-  sudo wget https://todoist.com/linux_app/appimage -O /opt/todoist/todoist.AppImage
-  sudo chmod +x /opt/todoist/todoist.AppImage
-
   install_neovim
   install_mpd
   install_ranger
