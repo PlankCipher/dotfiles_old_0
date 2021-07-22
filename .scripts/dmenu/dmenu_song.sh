@@ -3,7 +3,7 @@
 # Simple script to change playing song
 # using a dmenu
 
-NEXT_SONG="$(mpc listall | dmenu -p 'play:' -i -l 15)"
+NEXT_SONG="$(mpc listall | dmenu -p 'Play:' -i -l 15)"
 
 # Avoid playing next song if the previous
 # command exited with a non zero exit code
