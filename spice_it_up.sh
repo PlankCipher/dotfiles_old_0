@@ -22,7 +22,7 @@ install_stuff_for_dwmblocks () {
   sudo pacman -S vnstat
   sudo systemctl enable vnstat
 
-  yay -S ttf-unifont noto-fonts-emoji sysstat libqalculate bc
+  yay -S ttf-unifont noto-fonts-emoji sysstat libqalculate bc bluez-hcitool bluez-utils
 
   sudo mkdir -p /usr/share/fonts/opentype/
   sudo cp $SCRIPT_DIR/fontawesome/* /usr/share/fonts/opentype/
