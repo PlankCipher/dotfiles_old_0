@@ -10,4 +10,5 @@ setxkbmap -layout us,ara -option grp:win_space_toggle,caps:escape &
 thunderbird &
 dunst &
 dwmblocks &
+picom &
 exec dwm
