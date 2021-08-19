@@ -131,6 +131,13 @@ install_zsh_and_ohmyzsh () {
 
   # Install zsh-syntax-highlighting plugin
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+  # Install python-colorscript
+  sudo wget https://raw.githubusercontent.com/stautonico/python-color-scripts/main/python-colorscript -P /usr/bin/ && \
+  sudo chmod +x /usr/bin/python-colorscript && \
+  sudo mkdir /etc/python-colorscript && \
+  sudo wget https://raw.githubusercontent.com/stautonico/python-color-scripts/main/art.json -P /etc/python-colorscript && \
+  sudo chmod 666 /etc/python-colorscript/art.json
 }
 
 install_dev_stuff () {
