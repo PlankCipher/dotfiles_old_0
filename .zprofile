@@ -1,7 +1,7 @@
 export LC_ALL="en_US.UTF8"
 export EDITOR="nvim"
 export VISUAL="nvim"
-export PATH="$PATH:/home/plankcipher/.yarn/bin"
+export PATH="$PATH:$HOME/.yarn/bin"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
