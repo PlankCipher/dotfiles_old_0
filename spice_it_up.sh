@@ -65,7 +65,7 @@ install_et () {
 }
 
 install_main_ui_dependencies () {
-  yay -S xorg xorg-server xorg-xinit xorg-setxkbmap xorg-xmodmap xf86-video-intel xf86-input-libinput xclip
+  yay -S xorg xorg-server xorg-xinit xorg-setxkbmap xorg-xmodmap xf86-video-amdgpu xf86-input-libinput xclip
 
   yay -S picom-ibhagwan-git rofi-greenclip xautolock unclutter brightnessctl pulseaudio alsa alsa-utils pavucontrol dunst libnotify gnome-themes-extra bibata-cursor-theme-bin iw
 
@@ -154,7 +154,7 @@ install_dev_stuff () {
   curl https://cli-assets.heroku.com/install.sh | sh
 
   ## Install XAMPP
-  wget https://www.apachefriends.org/xampp-files/8.0.3/xampp-linux-x64-8.0.3-0-installer.run -O $HOME/Downloads/xampp_linux_installer.run
+  wget https://www.apachefriends.org/xampp-files/8.0.10/xampp-linux-x64-8.0.10-0-installer.run -O $HOME/Downloads/xampp_linux_installer.run
   chmod +x $HOME/Downloads/xampp_linux_installer.run
   sudo $HOME/Downloads/xampp_linux_installer.run --mode text
   rm -rf $HOME/Downloads/xampp_linux_installer.run
