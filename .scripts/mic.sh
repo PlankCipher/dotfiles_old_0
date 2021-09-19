@@ -15,7 +15,7 @@ get_status () {
     ICON=''
   fi
 
-  echo -e "\x10$ICON\x0b $STATUS"
+  echo -e "\x0c$ICON\x0b $STATUS"
 }
 
 

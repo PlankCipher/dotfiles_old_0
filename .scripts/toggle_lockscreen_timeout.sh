@@ -16,9 +16,9 @@ get_timeout () {
   pgrep xautolock > /dev/null
 
   if [[ $? -ne 0 ]]; then
-    echo -e "\x0c\x0b Off"
+    echo -e "\x0d\x0b Off"
   else
-    echo -e "\x0c\x0b On"
+    echo -e "\x0d\x0b On"
   fi
 }
 
