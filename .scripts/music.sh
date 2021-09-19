@@ -10,9 +10,9 @@ get_status () {
 
   STATUS=$(mpc | awk 'NR==2 { print $1 }' | sed -E 's/\[|\]//g')
   if [[ "$STATUS" == "playing" ]]; then
-    echo -e "\x10\x0b $CURRENT"
+    echo -e "\x0d\x0b $CURRENT"
   else
-    echo -e "\x10\x0b \x11$CURRENT\x0b"
+    echo -e "\x0d\x0b \x11$CURRENT\x0b"
   fi
 }
 

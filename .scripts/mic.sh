@@ -5,25 +5,17 @@
 # by polybar or just toggles the mic
 
 get_status () {
-  FRONT_RIGHT_STATUS=$(amixer sget Capture | awk '/Front Right:/ { print $7 }' | cut -d '[' -f 2 | cut -d ']' -f 1)
-  FRONT_LEFT_STATUS=$(amixer sget Capture | awk '/Front Left:/ { print $7 }' | cut -d '[' -f 2 | cut -d ']' -f 1)
+  DEFAULT_SOURCE_NAME=$(pacmd stat | sed '/Default source name/ !d' | awk '{ print $4 }')
+  MUTED=$(pacmd list-sources | sed -E "/name: <$DEFAULT_SOURCE_NAME>/,/muted:/ !d; /^\s*muted:/ !d" | awk '{ print $2 }')
 
-  STATUS="N/A"
-  MIC_ICON="N/A"
-  if [ $FRONT_RIGHT_STATUS == $FRONT_LEFT_STATUS ]; then
-    if [ $FRONT_RIGHT_STATUS == "off" ]; then
-      MIC_ICON=""
-    else
-      MIC_ICON=""
-    fi
-
-    STATUS="$FRONT_RIGHT_STATUS"
-  else
-    MIC_ICON=""
-    STATUS="${FRONT_LEFT_STATUS^} ${FRONT_RIGHT_STATUS^}"
+  STATUS='On'
+  ICON=''
+  if [[ "$MUTED" == 'yes' ]]; then
+    STATUS='Off'
+    ICON=''
   fi
 
-  echo -e "\x0e$MIC_ICON\x0b ${STATUS^}"
+  echo -e "\x10$ICON\x0b $STATUS"
 }
 
 

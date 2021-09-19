@@ -23,7 +23,7 @@ get_volume () {
     TEXT="$VOL%"
   fi
 
-  echo -e "\x0d$ICON\x0b $TEXT"
+  echo -e "\x0f$ICON\x0b $TEXT"
 }
 
 case $1 in
