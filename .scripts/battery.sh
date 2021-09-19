@@ -18,7 +18,7 @@ else
   fi
 
   if [[ $CAPACITY -le 15 ]]; then
-    notify-send -a 'Battery' "Battery is very low ($CAPACITY). Plug the charger."
+    notify-send -a 'Battery' "Battery is very low ($CAPACITY%). Plug the charger."
   fi
 fi
 
