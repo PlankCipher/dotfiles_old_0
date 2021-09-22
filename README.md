@@ -77,6 +77,7 @@ In all what follows:
 | $MODIFIER_MOD+quotedbl      | Toggle songs                                         |
 | $MODIFIER_MOD+greater       | Play next song                                       |
 | $MODIFIER_MOD+u             | Toggle lockscreen timeout                            |
+| $MODIFIER_MOD+b             | Toggle fans mode (BOOST or according to temps)       |
 | $DMENU_MOD+a                | Launch dmenu_run                                     |
 | $DMENU_MOD+e                | Launch dmenu emoji picker                            |
 | $DMENU_MOD+g                | Launch dmenu greenclip clipboard manager             |
