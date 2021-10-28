@@ -5,7 +5,7 @@ let $FZF_DEFAULT_COMMAND = "rg --files --hidden --glob '!node_modules' --glob '!
 
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --hidden --line-number --no-heading --color=always --smart-case --glob "!node_modules" --glob "!.git" -- '.shellescape(<q-args>), 1,
+  \   'rg --hidden --line-number --no-heading --color=always --smart-case --glob "!node_modules" --glob "!.git" --glob "!LICENSE" -- '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
 
 " Customize fzf colors to match your color scheme
