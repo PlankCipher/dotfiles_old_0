@@ -16,4 +16,5 @@ let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 
 """""""""""""""""NERDTREE_GIT_PLUGIN"""""""""""""""""
+let g:NERDTreeGitStatusUseNerdFonts = 1
 let g:NERDTreeGitStatusShowIgnored = 1
