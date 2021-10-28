@@ -11,7 +11,6 @@ source $HOME/.config/nvim/config/plugins/dashboard.vim
 source $HOME/.config/nvim/config/plugins/fzf.vim
 source $HOME/.config/nvim/config/plugins/nerd.vim
 source $HOME/.config/nvim/config/plugins/markdown_preview.vim
-source $HOME/.config/nvim/config/plugins/indentline.vim
 
 " Keymappings
 let mapleader = ' '
@@ -23,3 +22,4 @@ source $HOME/.config/nvim/config/keymappings/floaterm.vim
 source $HOME/.config/nvim/config/keymappings/nerd.vim
 source $HOME/.config/nvim/config/keymappings/markdown_preview.vim
 source $HOME/.config/nvim/config/keymappings/vim_fugitive.vim
+source $HOME/.config/nvim/config/keymappings/colorscheme.vim

@@ -26,5 +26,5 @@ set showtabline=2
 set autoread
 set updatetime=300
 set list
-set listchars=trail:~
+set listchars=trail:~,lead:·
 set guicursor=

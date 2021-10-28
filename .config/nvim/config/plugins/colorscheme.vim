@@ -13,7 +13,8 @@ let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
 
 hi Whitespace ctermfg=White ctermbg=Red guifg=#FFFFFF guibg=#FF0000
-hi LeadingSpace ctermfg=242 ctermbg=None guifg=#6c6c6c guibg=None
+hi LeadingSpaces ctermfg=242 ctermbg=None guifg=#6c6c6c guibg=None
+match LeadingSpaces /^ \+/
 
 hi Normal ctermbg=None guibg=None
 hi CursorLineNr ctermbg=None guibg=None
