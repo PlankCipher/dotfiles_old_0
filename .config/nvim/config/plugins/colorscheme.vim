@@ -8,6 +8,11 @@ if (empty($TMUX))
   endif
 endif
 
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 80})
+augroup END
+
 let g:gruvbox_contrast_dark = 'hard'
 
 colorscheme gruvbox
