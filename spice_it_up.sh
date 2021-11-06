@@ -153,12 +153,6 @@ install_dev_stuff () {
   # Install Heroku CLI
   curl https://cli-assets.heroku.com/install.sh | sh
 
-  ## Install XAMPP
-  wget https://www.apachefriends.org/xampp-files/8.0.10/xampp-linux-x64-8.0.10-0-installer.run -O $HOME/Downloads/xampp_linux_installer.run
-  chmod +x $HOME/Downloads/xampp_linux_installer.run
-  sudo $HOME/Downloads/xampp_linux_installer.run --mode text
-  rm -rf $HOME/Downloads/xampp_linux_installer.run
-
   # Create main dev directories
   mkdir -p $HOME/chamber_of_magic/junk/ $HOME/chamber_of_magic/test/
 

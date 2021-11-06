@@ -89,7 +89,6 @@ In all what follows:
 | $APPS_MOD+e                 | Launch file manager (i.e. `ranger`)                  |
 | $APPS_MOD+s                 | Launch screenshot tool (i.e. `scrot`)                |
 | $APPS_MOD+m                 | Launch music player (i.e. `ncmpcpp`)                 |
-| $APPS_MOD+x                 | Launch XAMPP                                         |
 | $APPS_MOD+t                 | Launch Todoist                                       |
 | $APPS_MOD+f                 | Launch FreeTube                                      |
 | $WORKSPACES_MOD+[0-9]       | Switch to corresponding workspace                    |
