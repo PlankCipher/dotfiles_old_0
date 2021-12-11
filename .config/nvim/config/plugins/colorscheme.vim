@@ -43,3 +43,4 @@ hi CocGitTopRemovedSign ctermfg=234 ctermbg=234 guifg=#fb4934 guibg=#fb4934
 hi CocGitChangeRemovedSign ctermfg=234 ctermbg=234 guifg=#8ec07c guibg=#8ec07c
 
 hi Todo ctermfg=208 ctermbg=234 gui=reverse guifg=#fe8019 guibg=#1d2021
+hi CocCodeLens ctermfg=245 ctermbg=237 guifg=#928374 guibg=#3c3836
