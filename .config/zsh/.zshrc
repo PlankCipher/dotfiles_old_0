@@ -8,7 +8,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias clear-history="echo ' ' > $HISTFILE && history -c"
 alias open="xdg-open"
-alias full_upgrade="sudo pacman -Syu && echo '\n\n\n' && yay -Syu && echo '\n\n\n' && sudo npm update -g && echo '\n\n\n' && yarn global upgrade"
+alias full_upgrade="sudo pacman -Syu && echo '\n\n\n' && yay -Syu && echo '\n\n\n' && yarn global upgrade"
 alias bat="bat -p"
 alias cpt="cp $HOME/chamber_of_magic/test/main.cpp"
 alias deskrec="ffmpeg -framerate 25 -f x11grab -i :0.0"

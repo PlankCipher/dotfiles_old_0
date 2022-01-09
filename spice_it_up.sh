@@ -141,13 +141,14 @@ install_zsh_and_ohmyzsh () {
 }
 
 install_dev_stuff () {
-  # NodeJS, NPM, and YARN
-  sudo pacman -S nodejs npm
+  # NodeJS and YARN
+  sudo pacman -S nodejs
 
-  sudo npm config set init-license GPL-3.0-only -g
-  sudo npm config set init-author-name PlankCipher -g
+  corepack enable
 
-  sudo npm install yarn -g
+  yarn config set init-license GPL-3.0-only -g
+  yarn config set init-author-name PlankCipher -g
+
   yarn global add eslint-cli create-react-app
 
   # Install Heroku CLI
