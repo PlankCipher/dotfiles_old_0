@@ -157,6 +157,10 @@ install_dev_stuff () {
   # Create main dev directories
   mkdir -p $HOME/chamber_of_magic/junk/ $HOME/chamber_of_magic/test/
 
+  # docker
+  sudo pacman -S docker
+  sudo systemctl enable docker
+
   # Other debugging programs
   yay -S insomnia-bin
 }
