@@ -1,12 +1,16 @@
 {
   "coc.preferences.formatOnSaveFiletypes": ["*"],
+  "git.removedSign.text": "-",
+  "css.lint.duplicateProperties": "warning",
   "eslint.packageManager": "yarn",
+  "npm.binPath": "yarn",
   "prettier.singleQuote": true,
   "prettier.trailingComma": "all",
   "diagnostic.infoSign": "ℹ️",
   "diagnostic.warningSign": "⚠️",
   "diagnostic.errorSign": "❌",
-  "git.addGBlameToVirtualText": true,
-  "git.virtualTextPrefix": "    >>> ",
-  "git.removedSign.text": "-"
+  "diagnostic.refreshOnInsertMode": true,
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
+  "diagnostic.virtualTextPrefix": "    "
 }
