@@ -19,6 +19,7 @@ source $HOME/.config/nvim/config/keymappings/buffer_navigation.vim
 source $HOME/.config/nvim/config/keymappings/fzf.vim
 source $HOME/.config/nvim/config/keymappings/coc.vim
 source $HOME/.config/nvim/config/keymappings/floaterm.vim
+source $HOME/.config/nvim/config/keymappings/make_and_run.vim
 source $HOME/.config/nvim/config/keymappings/nerd.vim
 source $HOME/.config/nvim/config/keymappings/markdown_preview.vim
 source $HOME/.config/nvim/config/keymappings/vim_fugitive.vim
