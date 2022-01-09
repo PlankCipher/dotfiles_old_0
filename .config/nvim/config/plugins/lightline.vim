@@ -3,13 +3,13 @@ function! DiagnosticSummary() abort
   if empty(info) | return '' | endif
   let msgs = []
   if get(info, 'error', 0)
-    call add(msgs, 'E' . ':' . info['error'])
+    call add(msgs, '❌:' . info['error'])
   endif
   if get(info, 'warning', 0)
-    call add(msgs, 'W' . ':' . info['warning'])
+    call add(msgs, '⚠️ :' . info['warning'])
   endif
   if get(info, 'information', 0)
-    call add(msgs, 'I' . ':' . info['information'])
+    call add(msgs, 'ℹ️ :' . info['information'])
   endif
   return join(msgs, ' ')
 endfunction
@@ -45,7 +45,7 @@ let g:lightline = {
   \   'readonly': '(&filetype!="help"&& &readonly)',
   \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
   \ },
-  \ 'separator': { 'left': '', 'right': '' },
+  \ 'separator': { 'left': '', 'right': '' },
   \ 'subseparator': { 'left': '|', 'right': '|' },
   \ 'tabline': {
   \   'left': [ ['buffers'] ],
