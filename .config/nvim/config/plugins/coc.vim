@@ -9,7 +9,6 @@ let g:coc_global_extensions = [
   \'coc-tsserver',
   \'coc-git',
   \'coc-pairs',
-  \'coc-jest',
   \'coc-highlight',
   \'coc-clangd',
   \'coc-sh',
