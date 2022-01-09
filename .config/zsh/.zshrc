@@ -12,6 +12,7 @@ alias full_upgrade="sudo pacman -Syu && echo '\n\n\n' && yay -Syu && echo '\n\n\
 alias bat="bat -p"
 alias cpt="cp $HOME/chamber_of_magic/test/main.cpp"
 alias deskrec="ffmpeg -framerate 25 -f x11grab -i :0.0"
+alias gd="git diff --patch --stat"
 
 # Clear history on start and exit
 clear-history 2> /dev/null
