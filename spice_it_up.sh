@@ -141,6 +141,8 @@ install_zsh_and_ohmyzsh () {
 }
 
 install_dev_stuff () {
+  sudo pacman -S man-pages
+
   # NodeJS and YARN
   sudo pacman -S nodejs
 
