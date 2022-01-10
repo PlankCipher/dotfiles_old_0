@@ -168,7 +168,7 @@ install_dev_stuff () {
 }
 
 install_other_dependencies () {
-  yay -S scrot feh vlc zathura zathura-pdf-mupdf ueberzug brave-bin python-pip python zip unzip bat discord freetube-bin franz-bin telegram-desktop libxft-bgra imagemagick i3lock fuse dell-g5se-fanctl
+  yay -S scrot feh vlc zathura zathura-pdf-mupdf ueberzug brave-bin python-pip python zip unzip bat freetube-bin libxft-bgra imagemagick i3lock fuse dell-g5se-fanctl
 
   # Thunderbird
   sudo pacman -S thunderbird
