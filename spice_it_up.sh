@@ -67,7 +67,9 @@ install_et () {
 install_main_ui_dependencies () {
   yay -S xorg xorg-server xorg-xinit xorg-setxkbmap xorg-xmodmap xf86-video-amdgpu xf86-input-libinput xclip
 
-  yay -S picom-ibhagwan-git rofi-greenclip xautolock unclutter brightnessctl pulseaudio alsa alsa-utils pavucontrol dunst libnotify gnome-themes-extra bibata-cursor-theme-bin iw
+  yay -S picom-ibhagwan-git rofi-greenclip xautolock unclutter brightnessctl pulseaudio alsa-utils pavucontrol dunst libnotify gnome-themes-extra bibata-cursor-theme-bin iw
+
+  systemctl --user enable pulseaudio
 
   sed -i "s/\/home\/testninja/\/home\/$(whoami)/" $SCRIPT_DIR/.config/greenclip.toml
 
@@ -146,7 +148,7 @@ install_dev_stuff () {
   # NodeJS and YARN
   sudo pacman -S nodejs
 
-  corepack enable
+  sudo corepack enable
 
   yarn config set init-license GPL-3.0-only -g
   yarn config set init-author-name PlankCipher -g
