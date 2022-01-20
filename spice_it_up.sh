@@ -83,7 +83,7 @@ install_neovim () {
   ## Install vim-plug
   sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-  pip install jedi
+  yarn global add vscode-langservers-extracted typescript typescript-language-server emmet-ls
 
   ## Install Hack Nerd Font
   mkdir -p $HOME/Downloads/Compressed/
@@ -175,11 +175,11 @@ install_other_dependencies () {
   # Thunderbird
   sudo pacman -S thunderbird
 
-  install_neovim
   install_mpd
   install_ranger
   install_zsh_and_ohmyzsh
   install_dev_stuff
+  install_neovim
 }
 
 copy_files_and_create_dirs () {

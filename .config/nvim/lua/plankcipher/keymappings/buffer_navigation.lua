@@ -1,0 +1,5 @@
+vim.api.nvim_set_keymap('n', '<leader>h', ':bprev<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>l', ':bnext<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>t', ':enew<CR>' , {})
+vim.api.nvim_set_keymap('n', '<leader>q', ':bp <BAR> bd #<CR>', {})
+vim.api.nvim_set_keymap('n', '<leader>s', '<C-W><C-W>', {noremap = true})
