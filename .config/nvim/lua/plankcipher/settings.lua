@@ -31,3 +31,4 @@ vim.opt.listchars = {trail = '~', lead = '·'}
 vim.opt.guicursor = ''
 vim.opt.spell = true
 vim.opt.spelloptions = 'camel'
+vim.opt.spellcapcheck = ''

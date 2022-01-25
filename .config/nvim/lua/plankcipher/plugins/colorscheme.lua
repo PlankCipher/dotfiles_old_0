@@ -24,7 +24,6 @@ vim.cmd('hi LeadingSpaces ctermfg=242 ctermbg=None guifg=#6c6c6c guibg=None')
 vim.cmd([[match LeadingSpaces /^ \+/]])
 
 vim.cmd('hi Normal ctermbg=None guibg=None')
-vim.cmd('hi SpellCap cterm=None gui=None guisp=None')
 vim.cmd('hi! link CursorLine None')
 vim.cmd('hi CursorLineNr ctermbg=None guibg=None')
 vim.cmd('hi VertSplit ctermbg=None guibg=None')
