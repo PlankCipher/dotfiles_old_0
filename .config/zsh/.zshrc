@@ -9,7 +9,7 @@ source $ZSH/oh-my-zsh.sh
 alias clear-history="echo ' ' > $HISTFILE && history -c"
 alias open="xdg-open"
 alias full_upgrade="sudo pacman -Syu && echo '\n\n\n' && yay -Syu && echo '\n\n\n' && yarn global upgrade"
-alias bat="bat -p"
+alias bat="bat -p --theme gruvbox-dark"
 alias cpt="cp $HOME/chamber_of_magic/test/main.cpp"
 alias deskrec="ffmpeg -framerate 25 -f x11grab -i :0.0"
 alias gd="git diff --patch --stat"
