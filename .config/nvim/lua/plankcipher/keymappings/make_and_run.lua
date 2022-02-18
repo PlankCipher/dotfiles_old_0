@@ -16,3 +16,6 @@ vim.cmd([[let runprg = ':echoerr "`runprg` is not set, use <leader>. to set it"'
 
 vim.api.nvim_set_keymap('n', '<leader>.', ':let runprg = ', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>..', ':exe runprg<CR>', {noremap = true})
+
+-- Make and Run
+vim.api.nvim_set_keymap('n', '<leader>,.', ':make<CR><CR>:exe runprg<CR>', {noremap = true})
