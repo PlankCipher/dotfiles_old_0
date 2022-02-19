@@ -31,3 +31,14 @@ function goToLuaConfigFile()
 end
 
 vim.api.nvim_set_keymap('n', 'gl', '<cmd>lua goToLuaConfigFile()<CR>', {noremap = true})
+
+function vertSplitHeaderFile()
+  local current_filepath = vim.fn.expand('%')
+  if vim.endswith(current_filepath, '.cpp') then
+    local header_filepath = current_filepath:sub(1, -4) .. 'h'
+    vim.cmd('vs ' .. header_filepath)
+    vim.cmd([[match LeadingSpaces /^ \+/]])
+  end
+end
+
+vim.api.nvim_set_keymap('n', 'gh', '<cmd>lua vertSplitHeaderFile()<CR>', {noremap = true})
