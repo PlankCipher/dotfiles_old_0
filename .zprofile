@@ -11,6 +11,7 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export LESSHISTFILE="-"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export HISTFILE="$XDG_DATA_HOME/zsh/history"
+export FZF_DEFAULT_OPTS="--layout=reverse --info=inline -i"
 
 mpd &
 startx

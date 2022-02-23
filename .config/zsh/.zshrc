@@ -13,6 +13,7 @@ alias bat="bat -p --theme gruvbox-dark"
 alias cpt="cp $HOME/chamber_of_magic/test/main.cpp"
 alias deskrec="ffmpeg -framerate 25 -f x11grab -i :0.0"
 alias gd="git diff --patch --stat"
+alias gdf='gd $((git status -s | sed -E "/(^\?\?)|(^M )/d" | awk "{ print \$2 }" | fzf) || date +%s) 2> /dev/null'
 
 # Clear history on start and exit
 clear-history 2> /dev/null
