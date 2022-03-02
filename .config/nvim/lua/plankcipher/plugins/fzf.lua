@@ -9,6 +9,12 @@ vim.cmd([[command! -bang -nargs=* Rg
   \   fzf#vim#with_preview(), <bang>0)
 ]])
 
+vim.cmd([[command! -bang -nargs=* Gdf
+  \ call fzf#vim#grep(
+  \   'git status -s | sed -E "/(^\?\?)|(^M )/d" | awk "{ print \$2 }"'.shellescape(<q-args>), 1,
+  \   {'options': ['--preview', 'bat -p --color always -l diff <(git diff --patch --stat {})', '--preview-window', '65%', '--prompt', 'git diff> '], 'sink': 'e'}, <bang>0)
+]])
+
 vim.g.fzf_colors = {
     fg      = {'fg', 'Normal'},
     bg      = {'bg', 'Normal'},
