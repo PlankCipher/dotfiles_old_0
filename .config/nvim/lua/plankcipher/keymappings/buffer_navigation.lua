@@ -32,13 +32,18 @@ end
 
 vim.api.nvim_set_keymap('n', 'gl', '<cmd>lua goToLuaConfigFile()<CR>', {noremap = true})
 
-function vertSplitHeaderFile()
+function vertSplitComplementaryFile()
   local current_filepath = vim.fn.expand('%')
+  local filepath_to_open = ""
+
   if vim.endswith(current_filepath, '.cpp') then
-    local header_filepath = current_filepath:sub(1, -4) .. 'h'
-    vim.cmd('vs ' .. header_filepath)
-    vim.cmd([[match LeadingSpaces /^ \+/]])
+    filepath_to_open = current_filepath:sub(1, -4) .. 'h'
+  elseif vim.endswith(current_filepath, '.h') then
+    filepath_to_open = current_filepath:sub(1, -2) .. 'cpp'
   end
+
+  vim.cmd('vs ' .. filepath_to_open)
+  vim.cmd([[match LeadingSpaces /^ \+/]])
 end
 
-vim.api.nvim_set_keymap('n', 'gh', '<cmd>lua vertSplitHeaderFile()<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', 'gh', '<cmd>lua vertSplitComplementaryFile()<CR>', {noremap = true})
