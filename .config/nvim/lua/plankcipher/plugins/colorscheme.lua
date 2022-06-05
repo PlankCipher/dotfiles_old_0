@@ -21,7 +21,14 @@ vim.cmd('colorscheme gruvbox')
 
 vim.cmd('hi Whitespace ctermfg=White ctermbg=Red guifg=#FFFFFF guibg=#FF0000')
 vim.cmd('hi LeadingSpaces ctermfg=242 ctermbg=None guifg=#6c6c6c guibg=None')
-vim.cmd([[match LeadingSpaces /^ \+/]])
+
+vim.cmd([[
+augroup highlight_leading_spaces
+    autocmd!
+    autocmd WinEnter * silent! match LeadingSpaces /^ \+/
+augroup END
+match LeadingSpaces /^ \+/
+]])
 
 vim.cmd('hi Normal ctermbg=None guibg=None')
 vim.cmd('hi! link CursorLine None')
