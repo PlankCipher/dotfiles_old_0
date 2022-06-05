@@ -14,6 +14,7 @@ require('plankcipher.plugins.nvim_cmp')
 require('plankcipher.plugins.nvim_treesitter')
 require('plankcipher.plugins.formatters')
 require('plankcipher.plugins.gitsigns')
+require('plankcipher.plugins.goto_preview')
 
 -- Keymappings
 vim.g.mapleader = ' '
@@ -26,3 +27,4 @@ require('plankcipher.keymappings.nerd')
 require('plankcipher.keymappings.markdown_preview')
 require('plankcipher.keymappings.vim_fugitive')
 require('plankcipher.keymappings.colorscheme')
+require('plankcipher.keymappings.goto_preview')
