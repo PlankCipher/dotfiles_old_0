@@ -2,7 +2,11 @@ vim.api.nvim_set_keymap('n', '<leader>h', ':bprev<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>l', ':bnext<CR>', {noremap = true})
 vim.api.nvim_set_keymap('n', '<leader>t', ':enew<CR>' , {})
 vim.api.nvim_set_keymap('n', '<leader>q', ':bp <BAR> bd #<CR>', {})
-vim.api.nvim_set_keymap('n', '<leader>s', '<C-W><C-W>', {noremap = true})
+
+vim.api.nvim_set_keymap('n', '<leader>wk', '<C-W>k', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>wj', '<C-W>j', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>wh', '<C-W>h', {noremap = true})
+vim.api.nvim_set_keymap('n', '<leader>wl', '<C-W>l', {noremap = true})
 
 function goToLuaConfigFile()
   local HOME = os.getenv('HOME')
@@ -32,7 +36,7 @@ end
 
 vim.api.nvim_set_keymap('n', 'gl', '<cmd>lua goToLuaConfigFile()<CR>', {noremap = true})
 
-function vertSplitComplementaryFile()
+function vertSplitComplementaryFile(vertical_split)
   local current_filepath = vim.fn.expand('%')
   local filepath_to_open = ""
 
@@ -42,8 +46,13 @@ function vertSplitComplementaryFile()
     filepath_to_open = current_filepath:sub(1, -2) .. 'cpp'
   end
 
-  vim.cmd('vs ' .. filepath_to_open)
+  if vertical_split then
+    vim.cmd('vs ' .. filepath_to_open)
+  else
+    vim.cmd('sp ' .. filepath_to_open)
+  end
   vim.cmd([[match LeadingSpaces /^ \+/]])
 end
 
-vim.api.nvim_set_keymap('n', 'gh', '<cmd>lua vertSplitComplementaryFile()<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', 'gh', '<cmd>lua vertSplitComplementaryFile(true)<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', 'gsh', '<cmd>lua vertSplitComplementaryFile(false)<CR>', {noremap = true})
