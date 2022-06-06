@@ -169,6 +169,15 @@ install_dev_stuff () {
   yay -S insomnia-bin
 }
 
+install_kabmat () {
+  git clone https://github.com/PlankCipher/kabmat.git $HOME/Downloads/kabmat
+  cd $HOME/Downloads/kabmat
+  make
+  sudo make install
+  cd $SCRIPT_DIR
+  rm -rf $HOME/Downloads/kabmat
+}
+
 install_other_dependencies () {
   yay -S scrot feh vlc zathura zathura-pdf-mupdf ueberzug brave-bin python-pip python zip unzip bat freetube-bin libxft-bgra imagemagick i3lock fuse dell-g5se-fanctl
 
@@ -180,6 +189,7 @@ install_other_dependencies () {
   install_zsh_and_ohmyzsh
   install_dev_stuff
   install_neovim
+  install_kabmat
 }
 
 copy_files_and_create_dirs () {
