@@ -178,6 +178,15 @@ install_kabmat () {
   rm -rf $HOME/Downloads/kabmat
 }
 
+install_boomer () {
+  sudo pacman -S nim
+
+  git clone https://github.com/tsoding/boomer.git $HOME/chamber_of_magic/boomer
+  cd $HOME/chamber_of_magic/boomer
+  nimble build
+  cd $SCRIPT_DIR
+}
+
 install_other_dependencies () {
   yay -S scrot feh vlc zathura zathura-pdf-mupdf ueberzug brave-bin python-pip python zip unzip bat freetube-bin libxft-bgra imagemagick i3lock fuse dell-g5se-fanctl
 
@@ -190,6 +199,7 @@ install_other_dependencies () {
   install_dev_stuff
   install_neovim
   install_kabmat
+  install_boomer
 }
 
 copy_files_and_create_dirs () {
