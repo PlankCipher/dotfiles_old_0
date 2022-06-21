@@ -1,5 +1,0 @@
-vim.api.nvim_set_keymap('n', '<leader>ff', ':Files<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>fb', ':Buffers<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>fg', ':Rg<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>f;', ':History:<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>fd', ':Gdf<CR>', {noremap = true})

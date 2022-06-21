@@ -6,6 +6,15 @@ setup () {
   sudo pacman -Syu git base-devel make qt5-tools qt5-base gcc wget clang
 }
 
+copy_files_and_create_dirs () {
+  cp -r $SCRIPT_DIR/.config $SCRIPT_DIR/.scripts $SCRIPT_DIR/.zprofile $SCRIPT_DIR/.Xresources $SCRIPT_DIR/.xinitrc $SCRIPT_DIR/.icons $HOME/
+  mkdir -p $HOME/Downloads/Music
+  mkdir -p $HOME/.local/share/zsh
+  touch $HOME/.local/share/zsh/history
+  sudo cp $SCRIPT_DIR/40-libinput.conf /usr/share/X11/xorg.conf.d/
+  sudo cp $SCRIPT_DIR/index.theme /usr/share/icons/default/
+}
+
 install_yay () {
   sudo git clone https://aur.archlinux.org/yay-git.git /opt/yay-git
   sudo chown -R $(whoami):$(whoami) /opt/yay-git
@@ -77,19 +86,23 @@ install_main_ui_dependencies () {
   install_et
 }
 
-install_neovim () {
-  yay -S neovim fzf ripgrep the_silver_searcher fd
+install_doom_emacs () {
+  yay -S fzf ripgrep the_silver_searcher fd
 
-  ## Install vim-plug
-  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
-  yarn global add vscode-langservers-extracted typescript typescript-language-server emmet-ls
+  yarn global add vscode-langservers-extracted typescript typescript-language-server emmet-ls prettier @fsouza/prettierd PlankCipher/livedown
 
   ## Install Hack Nerd Font
   mkdir -p $HOME/Downloads/Compressed/
   curl -Lo $HOME/Downloads/Compressed/hack_nerd_font.zip 'https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.zip'
   sudo unzip $HOME/Downloads/Compressed/hack_nerd_font.zip -d /usr/share/fonts/TTF/
   rm -rf $HOME/Downloads/Compressed
+
+  copy_files_and_create_dirs
+
+  sudo pacman -S emacs-nativecomp
+
+  git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
+  ~/.emacs.d/bin/doom install
 }
 
 install_mpd () {
@@ -197,18 +210,9 @@ install_other_dependencies () {
   install_ranger
   install_zsh_and_ohmyzsh
   install_dev_stuff
-  install_neovim
+  install_doom_emacs
   install_kabmat
   install_boomer
-}
-
-copy_files_and_create_dirs () {
-  cp -r $SCRIPT_DIR/.config $SCRIPT_DIR/.scripts $SCRIPT_DIR/.zprofile $SCRIPT_DIR/.Xresources $SCRIPT_DIR/.xinitrc $SCRIPT_DIR/.icons $HOME/
-  mkdir -p $HOME/Downloads/Music
-  mkdir -p $HOME/.local/share/zsh
-  touch $HOME/.local/share/zsh/history
-  sudo cp $SCRIPT_DIR/40-libinput.conf /usr/share/X11/xorg.conf.d/
-  sudo cp $SCRIPT_DIR/index.theme /usr/share/icons/default/
 }
 
 setup
