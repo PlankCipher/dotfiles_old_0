@@ -1,38 +1,13 @@
-# prompt style and colors based on Steve Losh's Prose theme:
-# https://github.com/sjl/oh-my-zsh/blob/master/themes/prose.zsh-theme
-#
-# vcs_info modifications from Bart Trojanowski's zsh prompt:
-# http://www.jukie.net/bart/blog/pimping-out-zsh-prompt
-#
-# git untracked files modification from Brian Carper:
-# https://briancarper.net/blog/570/git-info-in-your-zsh-prompt
-
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 function virtualenv_info {
-    [ $VIRTUAL_ENV ] && echo '('%F{blue}`basename $VIRTUAL_ENV`%f') '
+    [ $VIRTUAL_ENV ] && echo "%{$fg[yellow]%}(%{$fg[magenta]%}`basename $VIRTUAL_ENV`%{$fg[yellow]%})%f "
 }
 
 setopt prompt_subst
 
 autoload -U add-zsh-hook
 autoload -Uz vcs_info
-
-#use extended color palette if available
-if [[ $terminfo[colors] -ge 256 ]]; then
-    turquoise="%F{81}"
-    orange="%F{166}"
-    purple="%F{135}"
-    hotpink="%F{161}"
-    limegreen="%F{118}"
-    red="%F{1}"
-else
-    turquoise="%F{cyan}"
-    orange="%F{yellow}"
-    purple="%F{magenta}"
-    hotpink="%F{red}"
-    limegreen="%F{green}"
-fi
 
 # enable VCS systems you use
 zstyle ':vcs_info:*' enable git svn
@@ -49,10 +24,10 @@ zstyle ':vcs_info:*:prompt:*' check-for-changes true
 # %R - repository path
 # %S - path in the repository
 PR_RST="%f"
-FMT_BRANCH="(%{$turquoise%}%b%u%c${PR_RST})"
-FMT_ACTION="(%{$limegreen%}%a${PR_RST})"
-FMT_UNSTAGED="%{$orange%} ●"
-FMT_STAGED="%{$limegreen%} ●"
+FMT_BRANCH="%{$fg[yellow]%}(%{$fg[magenta]%}%b%u%c%{$fg[yellow]%})${PR_RST}"
+FMT_ACTION="%{$fg[yellow]%}(%{$fg[green]%}%a%{$fg[yellow]%})${PR_RST}"
+FMT_UNSTAGED="%{$fg[blue]%} ●"
+FMT_STAGED="%{$fg[green]%} ●"
 
 zstyle ':vcs_info:*:prompt:*' unstagedstr   "${FMT_UNSTAGED}"
 zstyle ':vcs_info:*:prompt:*' stagedstr     "${FMT_STAGED}"
@@ -62,9 +37,9 @@ zstyle ':vcs_info:*:prompt:*' nvcsformats   ""
 
 function steeef_precmd {
     if [[ -n $(git status -s 2> /dev/null | grep "??") ]]; then
-        FMT_BRANCH="(%{$turquoise%}%b%u%c%{$hotpink%} ●${PR_RST})"
+        FMT_BRANCH="%{$fg[yellow]%}(%{$fg[magenta]%}%b%u%c %{$fg[red]%}●%{$fg[yellow]%})${PR_RST}"
     else
-        FMT_BRANCH="(%{$turquoise%}%b%u%c${PR_RST})"
+        FMT_BRANCH="%{$fg[yellow]%}(%{$fg[magenta]%}%b%u%c%{$fg[yellow]%})${PR_RST}"
     fi
     zstyle ':vcs_info:*:prompt:*' formats "${FMT_BRANCH} "
 
@@ -72,5 +47,5 @@ function steeef_precmd {
 }
 add-zsh-hook precmd steeef_precmd
 
-PROMPT=$'%{$red%}$(echo "$? " | sed "s/^0 $//")${PR_RST}[%{$purple%}%n${PR_RST}@%{$orange%}%m${PR_RST}] %{$limegreen%}%~${PR_RST} $vcs_info_msg_0_$(virtualenv_info)
-$ '
+PROMPT=$'%{$fg[yellow]%}┏━%{$fg[red]%}$(echo "$? " | sed "s/^0 $//")%{$fg[yellow]%}[%{$fg[cyan]%}%n%{$fg[yellow]%}@%{$fg[cyan]%}%m%{$fg[yellow]%}] %{$fg[blue]%}%~${PR_RST} $vcs_info_msg_0_$(virtualenv_info)
+%{$fg[yellow]%}┗━$ ${PR_RST}'
