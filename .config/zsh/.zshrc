@@ -63,4 +63,4 @@ done
 # Use block shape cursor on startup.
 echo -ne '\e[1 q'
 
-python-colorscript --256
+colorscript --random
