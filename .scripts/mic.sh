@@ -1,8 +1,7 @@
 #!/bin/sh
 
-# Uses amixer to get current status of mic
-# and output an icon and text to be interpreted
-# by polybar or just toggles the mic
+# - Outputs state of the mic (on/off)
+# - Toggles the mic
 
 get_status () {
   DEFAULT_SOURCE_NAME=$(pacmd stat | sed '/Default source name/ !d' | awk '{ print $4 }')

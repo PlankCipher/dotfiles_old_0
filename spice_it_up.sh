@@ -117,7 +117,7 @@ install_mpd () {
 install_ranger () {
   yay -S ranger
 
-  # Install The Great of All Time: Mighty Dragon
+  # Install dragon
   git clone https://github.com/mwh/dragon.git $HOME/Downloads/dragon
   cd $HOME/Downloads/dragon/
   sudo make install
