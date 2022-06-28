@@ -17,3 +17,4 @@ spectrum
 suckless
 tux
 xmonad
+bloks
