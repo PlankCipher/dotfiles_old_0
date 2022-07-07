@@ -7,7 +7,9 @@ setup () {
 }
 
 copy_files_and_create_dirs () {
-  cp -r $SCRIPT_DIR/.config $SCRIPT_DIR/.scripts $SCRIPT_DIR/.zprofile $SCRIPT_DIR/.Xresources $SCRIPT_DIR/.xinitrc $SCRIPT_DIR/.icons $HOME/
+  cp -r $SCRIPT_DIR/.config $SCRIPT_DIR/.scripts $SCRIPT_DIR/.zprofile $SCRIPT_DIR/.Xresources $SCRIPT_DIR/.xinitrc $HOME/
+  mkdir -p $HOME/.local/share/icons
+  cp -r $SCRIPT_DIR/.icons/* $HOME/.local/share/icons/
   mkdir -p $HOME/Downloads/Music
   mkdir -p $HOME/.local/share/zsh
   touch $HOME/.local/share/zsh/history
@@ -25,8 +27,9 @@ install_yay () {
 
 install_stuff_for_dwmblocks () {
   # Required to install ttf-unifont
-  mkdir -p $HOME/.gnupg
-  echo "keyserver hkps://keyserver.ubuntu.com" >> $HOME/.gnupg/gpg.conf
+  export GNUPGHOME="$HOME/.local/share/gnupg"
+  mkdir -p $GNUPGHOME
+  echo "keyserver hkps://keyserver.ubuntu.com" >> $GNUPGHOME/gpg.conf
 
   sudo pacman -S vnstat
   sudo systemctl enable vnstat
