@@ -34,6 +34,9 @@
       whitespace-global-modes '(not magit-mode dired-mode))
 (custom-set-faces! '(whitespace-tab :background))
 
+; remove background from markdown code blocks
+(custom-set-faces! '(markdown-code-face :background))
+
 ; select only text (not to the end of the window)
 (custom-set-faces! '(region :inverse-video t :extend nil))
 
