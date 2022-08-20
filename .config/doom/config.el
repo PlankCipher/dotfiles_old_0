@@ -1,7 +1,7 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 ; font and theme
-(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 18 :weight 'semi-light)
+(setq doom-font (font-spec :family "Hack Nerd Font Mono" :size 19 :weight 'semi-light)
       doom-theme 'doom-gruvbox)
 
 ; dashboard
