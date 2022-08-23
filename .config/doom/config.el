@@ -13,14 +13,8 @@
 (blink-cursor-mode +1)
 (setq blink-cursor-blinks 3)
 
-; box cursors all over the place
-(setq evil-emacs-state-cursor    'box
-      evil-insert-state-cursor   'box
-      evil-motion-state-cursor   'box
-      evil-normal-state-cursor   'box
-      evil-operator-state-cursor 'box
-      evil-replace-state-cursor  'box
-      evil-visual-state-cursor   'box)
+; use box cursor for evil insert state
+(setq evil-insert-state-cursor 'box)
 
 ; transparent background
 (set-frame-parameter (selected-frame) 'alpha 80)
