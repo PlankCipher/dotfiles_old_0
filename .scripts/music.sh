@@ -1,7 +1,7 @@
 #!/bin/sh
 
 get_status () {
-  CURRENT=$(mpc current | sed 's/\.mp3//')
+  CURRENT=$(mpc current | sed 's/\.mp3//; s/^.* - //')
   CURRENT_TRUNC=$(echo "$CURRENT" | cut -c -11 | sed 's/ $//')
 
   if [[ "$CURRENT_TRUNC" != "$CURRENT" ]]; then

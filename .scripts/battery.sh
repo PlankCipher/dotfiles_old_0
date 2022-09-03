@@ -6,6 +6,10 @@ STATUS=$(cat /sys/class/power_supply/BAT0/status)
 ICON=''
 if [[ "$STATUS" == 'Charging' ]]; then
   ICON=''
+
+  if [[ $CAPACITY -ge 97 ]]; then
+    notify-send -a 'Battery' "Battery almost full $CAPACITY%"
+  fi
 else
   if [[ $CAPACITY -gt 74 ]]; then
     ICON=''

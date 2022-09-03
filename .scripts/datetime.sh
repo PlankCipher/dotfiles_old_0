@@ -2,7 +2,7 @@
 
 case $1 in
   1)
-    notify-send -a 'Date' "$(date +%d-%m-%Y)"
+    notify-send -a 'Date' "$(date '+%a %d-%m-%Y')"
     ;;
 
   *)
