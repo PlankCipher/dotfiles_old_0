@@ -498,7 +498,7 @@ mouse-3: Restart preview"
   )
 
 ;; a better order to match the modeline layout
-(setq lsp-modeline-code-actions-segments '(icon count))
+(setq lsp-modeline-code-actions-segments '(icon count name))
 (add-to-list 'global-mode-string '(t (:eval (lsp-modeline--diagnostics-update-modeline))) 'append)
 (add-to-list 'global-mode-string '(t (:eval lsp-modeline--code-actions-string)) 'append)
 
