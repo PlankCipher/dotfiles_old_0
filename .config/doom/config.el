@@ -16,6 +16,9 @@
 ; use box cursor for evil insert state
 (setq evil-insert-state-cursor 'box)
 
+; don't add visually replaced text to the kill ring
+(setq evil-kill-on-visual-paste nil)
+
 ; transparent background
 (set-frame-parameter (selected-frame) 'alpha 80)
 (add-to-list 'default-frame-alist '(alpha . 80))
