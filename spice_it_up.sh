@@ -3,10 +3,30 @@
 SCRIPT_DIR=$(pwd)
 
 setup () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###      SETTING UP BUILD UTILS AND STUFFS      ###
+###                                             ###
+###################################################
+
+EOF
+
   sudo pacman -Syu git base-devel make qt5-tools qt5-base gcc wget clang
 }
 
 copy_files_and_create_dirs () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###       COPYING FILES AND CREATING DIRS       ###
+###                                             ###
+###################################################
+
+EOF
+
   cp -r $SCRIPT_DIR/.config $SCRIPT_DIR/.scripts $SCRIPT_DIR/.zprofile $SCRIPT_DIR/.Xresources $SCRIPT_DIR/.xinitrc $HOME/
   mkdir -p $HOME/.local/share/icons
   cp -r $SCRIPT_DIR/.icons/* $HOME/.local/share/icons/
@@ -18,6 +38,16 @@ copy_files_and_create_dirs () {
 }
 
 install_yay () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###               INSTALLING YAY                ###
+###                                             ###
+###################################################
+
+EOF
+
   sudo git clone https://aur.archlinux.org/yay-git.git /opt/yay-git
   sudo chown -R $(whoami):$(whoami) /opt/yay-git
   cd /opt/yay-git
@@ -26,6 +56,16 @@ install_yay () {
 }
 
 install_stuff_for_dwmblocks () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###       INSTALLING STUFFS FOR DWMBLOCKS       ###
+###                                             ###
+###################################################
+
+EOF
+
   # Required to install ttf-unifont
   export GNUPGHOME="$HOME/.local/share/gnupg"
   mkdir -p $GNUPGHOME
@@ -43,6 +83,16 @@ install_stuff_for_dwmblocks () {
 }
 
 install_suckless_stuff () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###          INSTALLING SUCKLESS STUFF          ###
+###                                             ###
+###################################################
+
+EOF
+
   # DWM
   cd $SCRIPT_DIR/suckless/dwm
   sudo make clean install
@@ -66,6 +116,16 @@ install_suckless_stuff () {
 }
 
 install_et () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###                INSTALLING ET                ###
+###                                             ###
+###################################################
+
+EOF
+
   sudo pacman -S tre sox
 
   mkdir -p $HOME/Downloads
@@ -77,6 +137,16 @@ install_et () {
 }
 
 install_main_ui_dependencies () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###           INSTALLING MAIN UI DEPS           ###
+###                                             ###
+###################################################
+
+EOF
+
   yay -S xorg xorg-server xorg-xinit xorg-setxkbmap xorg-xmodmap xf86-video-amdgpu xf86-input-libinput xclip
 
   yay -S picom-ibhagwan-git rofi-greenclip xautolock unclutter brightnessctl pulseaudio alsa-utils pavucontrol dunst libnotify gnome-themes-extra bibata-cursor-theme-bin iw lxsession
@@ -90,6 +160,16 @@ install_main_ui_dependencies () {
 }
 
 install_doom_emacs () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###            INSTALLING DOOM EMACS            ###
+###                                             ###
+###################################################
+
+EOF
+
   yay -S fzf ripgrep the_silver_searcher fd
 
   yarn global add vscode-langservers-extracted typescript typescript-language-server emmet-ls prettier @fsouza/prettierd PlankCipher/livedown
@@ -110,6 +190,16 @@ install_doom_emacs () {
 }
 
 install_mpd () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###              INSTALLING MPD                 ###
+###                                             ###
+###################################################
+
+EOF
+
   yay -S mpd mpc ncmpcpp
 
   # Add mpd to required groups
@@ -119,6 +209,16 @@ install_mpd () {
 }
 
 install_ranger () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###              INSTALLING RANGER              ###
+###                                             ###
+###################################################
+
+EOF
+
   yay -S ranger
 
   # Install dragon
@@ -135,6 +235,16 @@ install_ranger () {
 }
 
 install_zsh_and_ohmyzsh () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###         INSTALLING ZSH AND OHMYZSH          ###
+###                                             ###
+###################################################
+
+EOF
+
   yay -S zsh
 
   # Change default shell to ZSH
@@ -157,6 +267,16 @@ install_zsh_and_ohmyzsh () {
 }
 
 install_dev_stuff () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###            INSTALLING DEV STUFFS            ###
+###                                             ###
+###################################################
+
+EOF
+
   sudo pacman -S man-pages
 
   # NodeJS and YARN
@@ -184,6 +304,16 @@ install_dev_stuff () {
 }
 
 install_kabmat () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###              INSTALLING KABMAT              ###
+###                                             ###
+###################################################
+
+EOF
+
   git clone https://github.com/PlankCipher/kabmat.git $HOME/Downloads/kabmat
   cd $HOME/Downloads/kabmat
   make
@@ -193,6 +323,16 @@ install_kabmat () {
 }
 
 install_boomer () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###              INSTALLING BOOMER              ###
+###                                             ###
+###################################################
+
+EOF
+
   sudo pacman -S nim
 
   git clone https://github.com/tsoding/boomer.git $HOME/chamber_of_magic/boomer
@@ -202,6 +342,16 @@ install_boomer () {
 }
 
 install_other_dependencies () {
+  cat <<EOF
+
+###################################################
+###                                             ###
+###            INSTALLING OTHER DEPS            ###
+###                                             ###
+###################################################
+
+EOF
+
   yay -S scrot feh vlc zathura zathura-pdf-mupdf ueberzug brave-bin python-pip python zip unzip bat freetube-bin libxft-bgra imagemagick i3lock fuse dell-g5se-fanctl
 
   # Thunderbird
