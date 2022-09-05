@@ -81,6 +81,9 @@
 (map! :nvr "M-k" #'drag-stuff-up)
 (map! :nvr "M-j" #'drag-stuff-down)
 
+; use dec-at-pt instead of dec-at-pt-incremental
+(map! :nv "g-" #'evil-numbers/dec-at-pt)
+
 ; magit
 (setq magit-section-initial-visibility-alist '((magit-log-section . show))
       magit-delete-by-moving-to-trash nil
