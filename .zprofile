@@ -20,7 +20,6 @@ export NODE_REPL_HISTORY=""
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export WINEPREFIX="$XDG_DATA_HOME/wine"
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
-export LSP_USE_PLISTS=true
 
 mpd &
 startx

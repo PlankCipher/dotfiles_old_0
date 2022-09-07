@@ -181,7 +181,6 @@ EOF
   rm -rf $HOME/Downloads/Compressed
 
   copy_files_and_create_dirs
-  export LSP_USE_PLISTS=true
 
   sudo pacman -S emacs-nativecomp
 
