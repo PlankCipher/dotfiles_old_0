@@ -74,8 +74,8 @@
 (map! :nvr "j" #'evil-next-visual-line)
 
 ; make evil n and N center search results
-(map! :nvr "n" (lambda () (interactive) (evil-ex-search-next)     (evil-scroll-line-to-center nil)))
-(map! :nvr "N" (lambda () (interactive) (evil-ex-search-previous) (evil-scroll-line-to-center nil)))
+(map! :nv "n" (lambda () (interactive) (evil-ex-search-next)     (evil-scroll-line-to-center nil)))
+(map! :nv "N" (lambda () (interactive) (evil-ex-search-previous) (evil-scroll-line-to-center nil)))
 
 ; drag stuff up and down
 (map! :nvr "M-k" #'drag-stuff-up)
