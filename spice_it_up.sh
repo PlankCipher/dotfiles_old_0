@@ -171,6 +171,7 @@ install_doom_emacs () {
 EOF
 
   yay -S fzf ripgrep the_silver_searcher fd
+  sudo pacman -S aspell aspell-en
 
   yarn global add vscode-langservers-extracted typescript typescript-language-server emmet-ls prettier @fsouza/prettierd PlankCipher/livedown
 

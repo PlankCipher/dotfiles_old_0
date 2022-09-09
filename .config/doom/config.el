@@ -611,3 +611,25 @@ mouse-3: Restart preview"
   )
 
 (map! :leader :n "m" #'plankcipher/toggle-livedown)
+
+; spell check
+(ispell-change-dictionary "en_US" t)
+(after! spell-fu
+  (setq spell-fu-idle-delay 0.0)
+  (setq ispell-extra-args (remove "--run-together" ispell-extra-args))
+
+  (add-hook 'tree-sitter-after-on-hook
+            (lambda ()
+              (setq spell-fu-faces-include '(font-lock-comment-face
+                                             font-lock-doc-face
+                                             font-lock-string-face
+                                             tree-sitter-hl-face:comment
+                                             tree-sitter-hl-face:doc
+                                             tree-sitter-hl-face:string))
+              (setq spell-fu-faces-exclude '(font-lock-constant-face
+                                             tree-sitter-hl-face:constant))))
+
+  (advice-add 'spell-fu-check-word :override
+              (lambda (pos-beg pos-end word)
+                (unless (spell-fu--check-word-in-dict-list (spell-fu--canonicalize-word word))
+                  (spell-fu-mark-incorrect pos-beg pos-end)))))

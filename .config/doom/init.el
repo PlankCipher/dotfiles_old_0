@@ -31,6 +31,7 @@
 
        :checkers
        (syntax +childframe)
+       (spell +everywhere +aspell)
 
        :tools
        lookup
