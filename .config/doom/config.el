@@ -504,9 +504,23 @@ mouse-3: Restart preview"
   )
 
 ;; a better order to match the modeline layout
-(setq lsp-modeline-code-actions-segments '(icon count name))
-(add-to-list 'global-mode-string '(t (:eval (lsp-modeline--diagnostics-update-modeline))) 'append)
-(add-to-list 'global-mode-string '(t (:eval lsp-modeline--code-actions-string)) 'append)
+(add-hook 'lsp-modeline-code-actions-mode-hook
+          (lambda ()
+            (setq global-mode-string (remove '(t (:eval lsp-modeline--code-actions-string)) global-mode-string))
+            ))
+(add-hook 'lsp-modeline-diagnostics-mode-hook
+          (lambda ()
+            (setq global-mode-string (remove '(t (:eval (lsp-modeline--diagnostics-update-modeline))) global-mode-string))
+            ))
+(after! lsp-mode
+  (setq lsp-modeline-code-actions-segments '(icon count name))
+  (add-to-list 'global-mode-string '(t (:eval
+                                        (if (fboundp 'lsp-modeline--diagnostics-update-modeline)
+                                            (lsp-modeline--diagnostics-update-modeline))))
+               'append)
+  (add-to-list 'global-mode-string '(t (:eval
+                                        (bound-and-true-p lsp-modeline--code-actions-string)))
+               'append))
 
 ;; hide the bar by blending it with the modeline
 (setq doom-modeline-bar-width 1)
