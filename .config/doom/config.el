@@ -632,6 +632,8 @@ mouse-3: Restart preview"
   (setq spell-fu-idle-delay 0.0)
   (setq ispell-extra-args (remove "--run-together" ispell-extra-args))
 
+  (custom-set-faces! '(spell-fu-incorrect-face :underline (:color "#fb4934")))
+
   (add-hook 'tree-sitter-after-on-hook
             (lambda ()
               (setq spell-fu-faces-include '(font-lock-comment-face
