@@ -31,6 +31,12 @@
       whitespace-global-modes '(not magit-mode dired-mode))
 (custom-set-faces! '(whitespace-tab :background))
 
+; show a ruler at column 80
+(global-display-fill-column-indicator-mode +1)
+(custom-set-faces!
+  '(fill-column-indicator :background "#504945"
+                          :foreground "#504945"))
+
 ; remove background from markdown code blocks
 (custom-set-faces! '(markdown-code-face :background))
 
