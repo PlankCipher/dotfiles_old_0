@@ -70,16 +70,16 @@
 (setq dired-kill-when-opening-new-dired-buffer t)
 
 ; make evil k and j move in terms of visual lines
-(map! :nvr "k" #'evil-previous-visual-line)
-(map! :nvr "j" #'evil-next-visual-line)
+(map! :nv "k" #'evil-previous-visual-line)
+(map! :nv "j" #'evil-next-visual-line)
 
 ; make evil n and N center search results
 (map! :nv "n" (lambda () (interactive) (evil-ex-search-next)     (evil-scroll-line-to-center nil)))
 (map! :nv "N" (lambda () (interactive) (evil-ex-search-previous) (evil-scroll-line-to-center nil)))
 
 ; drag stuff up and down
-(map! :nvr "M-k" #'drag-stuff-up)
-(map! :nvr "M-j" #'drag-stuff-down)
+(map! :nv "M-k" #'drag-stuff-up)
+(map! :nv "M-j" #'drag-stuff-down)
 
 ; use dec-at-pt instead of dec-at-pt-incremental
 (map! :nv "g-" #'evil-numbers/dec-at-pt)
