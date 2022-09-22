@@ -156,15 +156,13 @@
 ; modeline
 (after! doom-modeline
   ;; spacers
-  (doom-modeline-def-segment spc (doom-modeline-spc))
-  (push '(spc . doom-modeline-segment--spc) doom-modeline-fn-alist)
-  (doom-modeline-def-segment wspc (doom-modeline-wspc))
-  (push '(wspc . doom-modeline-segment--wspc) doom-modeline-fn-alist)
+  (doom-modeline-def-segment spc doom-modeline-spc)
+  (doom-modeline-def-segment wspc doom-modeline-wspc)
 
   ;; layout
   (doom-modeline-def-modeline 'main
-    '(bar spc modals wspc buffer-info wspc buffer-position wspc selection-info lsp misc-info checker wspc matches)
-    '(debug grip follow vcs wspc buffer-encoding wspc major-mode process spc))
+    '(bar spc modals wspc buffer-info wspc buffer-position wspc selection-info lsp misc-info checker matches)
+    '(debug grip follow vcs wspc buffer-encoding wspc major-mode process))
 
   ;; segments
   (doom-modeline-def-segment modals
@@ -174,7 +172,7 @@
            (ryo (doom-modeline--ryo))
            (xf (doom-modeline--xah-fly-keys))
            (boon (doom-modeline--boon))
-           (vsep (doom-modeline-vspc))
+           (vsep doom-modeline-vspc)
            (meow (doom-modeline--meow)))
       (concat (and evil (concat evil (and (or ow god ryo xf boon meow))))
               (and ow (concat ow (and (or god ryo xf boon meow))))
@@ -191,7 +189,7 @@
          (if (doom-modeline--active)
              icon
            (doom-modeline-propertize-icon icon 'mode-line-inactive))
-         (and (not (equal doom-modeline--buffer-file-state-icon "")) (doom-modeline-vspc))))))
+         (and (not (equal doom-modeline--buffer-file-state-icon "")) doom-modeline-vspc)))))
 
   (doom-modeline-def-segment buffer-info
     (concat
@@ -224,21 +222,21 @@ mouse-1: Display Line and Column Mode Menu"
                    (not doom-modeline--limited-width-p)
                    (>= (window-width) nyan-minimum-window-width))
               (concat
-               (doom-modeline-wspc)
+               doom-modeline-wspc
                (propertize (nyan-create) 'mouse-face mouse-face)))
              ((and active
                    (bound-and-true-p poke-line-mode)
                    (not doom-modeline--limited-width-p)
                    (>= (window-width) poke-line-minimum-window-width))
               (concat
-               (doom-modeline-wspc)
+               doom-modeline-wspc
                (propertize (poke-line-create) 'mouse-face mouse-face)))
              ((and active
                    (bound-and-true-p mlscroll-mode)
                    (not doom-modeline--limited-width-p)
                    (>= (window-width) mlscroll-minimum-current-width))
               (concat
-               (doom-modeline-wspc)
+               doom-modeline-wspc
                (let ((mlscroll-right-align nil))
                  (format-mode-line (mlscroll-mode-line)))))
              ((and active
@@ -246,14 +244,14 @@ mouse-1: Display Line and Column Mode Menu"
                    (not doom-modeline--limited-width-p)
                    (>= (window-width) sml-modeline-len))
               (concat
-               (doom-modeline-wspc)
+               doom-modeline-wspc
                (propertize (sml-modeline-create) 'mouse-face mouse-face)))
              (t ""))
 
        ;; Percent position
        (when doom-modeline-percent-position
          (concat
-          (doom-modeline-spc)
+          doom-modeline-spc
           (propertize (format-mode-line '("" doom-modeline-percent-position "%%"))
                       'face face
                       'help-echo "Buffer percentage\n\
@@ -270,25 +268,29 @@ mouse-1: Display Line and Column Mode Menu"
           (if (and (bound-and-true-p evil-local-mode) (eq evil-state 'visual))
               (cons evil-visual-beginning evil-visual-end)
             (cons (region-beginning) (region-end)))
-        (propertize
-         (let ((lines (count-lines beg (min end (point-max)))))
-           (concat (cond ((or (bound-and-true-p rectangle-mark-mode)
-                              (and (bound-and-true-p evil-visual-selection)
-                                   (eq 'block evil-visual-selection)))
-                          (let ((cols (abs (- (doom-modeline-column end)
-                                              (doom-modeline-column beg)))))
-                            (format "%dx%dB" lines cols)))
-                         ((and (bound-and-true-p evil-visual-selection)
-                               (eq evil-visual-selection 'line))
-                          (format "%dL" lines))
-                         ((> lines 1)
-                          (format "%dC %dL" (- end beg) lines))
-                         (t
-                          (format "%dC" (- end beg))))
-                   (when doom-modeline-enable-word-count
-                     (format " %dW" (count-words beg end)))
-                   (doom-modeline-wspc)))
-         'face 'doom-modeline-highlight))))
+        (concat
+         (propertize
+          (let ((lines (count-lines beg (min end (point-max)))))
+            (concat " "
+                    (cond ((or (bound-and-true-p rectangle-mark-mode)
+                               (and (bound-and-true-p evil-visual-selection)
+                                    (eq 'block evil-visual-selection)))
+                           (let ((cols (abs (- (doom-modeline-column end)
+                                               (doom-modeline-column beg)))))
+                             (format "%dx%dB" lines cols)))
+                          ((and (bound-and-true-p evil-visual-selection)
+                                (eq evil-visual-selection 'line))
+                           (format "%dL" lines))
+                          ((> lines 1)
+                           (format "%dC %dL" (- end beg) lines))
+                          (t
+                           (format "%dC" (- end beg))))
+                    (when doom-modeline-enable-word-count
+                      (format " %dW" (count-words beg end)))
+                    " "
+                    ))
+          'face 'doom-modeline-highlight)
+         doom-modeline-wspc))))
 
   (doom-modeline-def-segment lsp
     (when (and doom-modeline-lsp
@@ -305,13 +307,21 @@ mouse-1: Display Line and Column Mode Menu"
            (if active
                icon
              (doom-modeline-propertize-icon icon 'mode-line-inactive))
-           (doom-modeline-vspc))
-          ))))
+           (if (and (not (bound-and-true-p flycheck-mode))
+                    (eq (format-mode-line mode-line-misc-info) ""))
+               doom-modeline-wspc
+             doom-modeline-vspc))
+           ))))
 
   (doom-modeline-def-segment misc-info
     (when (and (doom-modeline--active)
                (not doom-modeline--limited-width-p))
-      '("" mode-line-misc-info)))
+      (concat
+       (format-mode-line mode-line-misc-info)
+       (when (and (not (bound-and-true-p flycheck-mode))
+                  (not (eq (format-mode-line mode-line-misc-info) "")))
+         doom-modeline-wspc))
+      ))
 
   (doom-modeline-def-segment checker
     (let ((active (doom-modeline--active))
@@ -331,10 +341,12 @@ mouse-1: Display Line and Column Mode Menu"
             ))
          (when text
            (concat
-            (doom-modeline-vspc)
+            doom-modeline-vspc
             (if active
                 text
               (propertize text 'face 'mode-line-inactive))))
+         (when (or icon text)
+           doom-modeline-wspc)
          ))))
 
   (doom-modeline-def-segment matches
@@ -354,7 +366,7 @@ mouse-1: Display Line and Column Mode Menu"
              (edebug (doom-modeline--debug-edebug))
              (on-error (doom-modeline--debug-on-error))
              (on-quit (doom-modeline--debug-on-quit))
-             (vsep (doom-modeline-vspc)))
+             (vsep doom-modeline-vspc))
         (concat (and dap (concat dap (and (or edebug on-error on-quit) vsep)))
                 (and edebug (concat edebug (and (or on-error on-quit) vsep)))
                 (and on-error (concat on-error (and on-quit vsep)))
@@ -363,7 +375,7 @@ mouse-1: Display Line and Column Mode Menu"
   (doom-modeline-def-segment grip
     (when (bound-and-true-p grip-mode)
       (concat
-       (doom-modeline-wspc)
+       doom-modeline-wspc
        (let ((face (if (doom-modeline--active)
                        (if grip--process
                            (pcase (process-status grip--process)
@@ -400,7 +412,7 @@ mouse-3: Restart preview"
              (nfollowing (- (length (memq (selected-window) windows))
                             1)))
         (concat
-         (doom-modeline-wspc)
+         doom-modeline-wspc
          (propertize (format "Follow %d/%d" (- nwindows nfollowing) nwindows)
                      'face 'doom-modeline-buffer-minor-mode)))))
 
@@ -409,7 +421,7 @@ mouse-3: Restart preview"
       (when-let ((icon doom-modeline--vcs-icon)
                  (text doom-modeline--vcs-text))
         (concat
-         (doom-modeline-wspc)
+         doom-modeline-wspc
          (propertize
           (if active
               icon
@@ -417,7 +429,7 @@ mouse-3: Restart preview"
           'mouse-face 'mode-line-highlight
           'help-echo (get-text-property 1 'help-echo vc-mode)
           'local-map (get-text-property 1 'local-map vc-mode))
-         (doom-modeline-spc)
+         doom-modeline-spc
          (if active
              text
            (propertize text 'face 'mode-line-inactive)))))
