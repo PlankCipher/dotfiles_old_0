@@ -32,6 +32,17 @@
 (custom-set-faces! '(whitespace-tab :background))
 
 ; show a ruler at column 80
+(defun plankcipher/disable-fill-column-indicator ()
+  (interactive)
+  (display-fill-column-indicator-mode -1))
+(add-hook! '(special-mode-hook
+             magit-mode-hook
+             dired-mode-hook
+             Info-mode-hook
+             compilation-mode-hook
+             vterm-mode-hook
+             Custom-mode-hook)
+           #'plankcipher/disable-fill-column-indicator)
 (global-display-fill-column-indicator-mode +1)
 (custom-set-faces!
   '(fill-column-indicator :background "#504945"
