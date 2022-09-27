@@ -64,8 +64,7 @@
       display-line-numbers-type 'relative
       org-directory "~/org/"
       compilation-auto-jump-to-first-error t
-      scroll-conservatively 0
-      save-place-file "/dev/null")
+      scroll-conservatively 0)
 (add-hook '+doom-dashboard-mode-hook (lambda () (kill-buffer "*scratch*")))
 
 ; make git status in fringe stand out more

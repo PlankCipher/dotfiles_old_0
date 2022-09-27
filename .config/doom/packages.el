@@ -27,3 +27,4 @@
 (package! magit-gitflow         :disable t)
 (package! highlight-numbers     :disable t)
 (package! exato                 :disable t)
+(package! saveplace             :disable t)
