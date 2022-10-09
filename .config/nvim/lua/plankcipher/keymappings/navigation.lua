@@ -46,7 +46,7 @@ local go_to_lua_config_file = function()
   end
 
   filename = HOME .. '/.config/nvim/lua/' .. filename:gsub('%.', '/') .. '.lua'
-  vim.cmd('edit ' .. filename)
+  vim.api.nvim_cmd({cmd = 'edit', args = {filename}}, {})
 end
 
 vim.keymap.set('n', 'gl', go_to_lua_config_file)
@@ -62,9 +62,9 @@ local open_complementary_file = function(vertical_split)
   end
 
   if vertical_split then
-    vim.cmd('vs ' .. filepath_to_open)
+    vim.api.nvim_cmd({cmd = 'vs', args = {filepath_to_open}}, {})
   else
-    vim.cmd('sp ' .. filepath_to_open)
+    vim.api.nvim_cmd({cmd = 'sp', args = {filepath_to_open}}, {})
   end
 end
 

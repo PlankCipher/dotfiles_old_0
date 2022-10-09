@@ -23,13 +23,13 @@ end)
 
 local run_in_terminal = function()
   vim.g.close_on_0_status = false
-  vim.cmd('te ' .. runprg)
+  vim.api.nvim_cmd({cmd = 'te', args = {runprg}}, {})
 end
 
 vim.keymap.set('n', '<leader>..', function() run_in_terminal() end)
 
 -- Make and Run
 vim.keymap.set('n', '<leader>,.', function()
-  vim.cmd('make')
+  vim.api.nvim_cmd({cmd = 'make'}, {})
   run_in_terminal()
 end)

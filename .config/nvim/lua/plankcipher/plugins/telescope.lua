@@ -16,7 +16,7 @@ function custom_actions._multiopen(prompt_bufnr, open_cmd)
 
   local initial_bufnr = vim.api.nvim_get_current_buf()
 
-  vim.cmd("silent cfdo " .. open_cmd)
+  vim.cmd('silent cfdo ' .. open_cmd)
 
   if vim.api.nvim_buf_get_name(initial_bufnr) == '' then
     vim.api.nvim_buf_delete(initial_bufnr, {})

@@ -5,7 +5,7 @@ if vim.fn.empty(vim.env.TMUX) == 1 then
 end
 
 vim.g.gruvbox_contrast_dark = 'hard'
-vim.cmd('colorscheme gruvbox')
+vim.api.nvim_cmd({cmd = 'colorscheme', args = {'gruvbox'}}, {})
 
 local hl = function(hl_group, value)
   vim.api.nvim_set_hl(0, hl_group, value)
@@ -23,7 +23,7 @@ hl('CurSearch', {link = 'IncSearch'})
 hl('NonText', {ctermfg = 242, ctermbg = 'None', fg = '#6c6c6c', bg = 'None'})
 hl('TrailingWhitespace', {ctermfg = 'white', ctermbg = 'red', fg = '#ffffff', bg = '#ff0000', bold = true})
 
-vim.cmd([[silent match TrailingWhitespace /\s\+$/]])
+vim.api.nvim_cmd({cmd = 'match', args = {'TrailingWhitespace', [[/\s\+$/]]}}, {})
 vim.api.nvim_create_autocmd('WinEnter', {
   pattern = '*',
   command = [[silent match TrailingWhitespace /\s\+$/]],

@@ -1,4 +1,4 @@
-vim.cmd('filetype plugin indent on')
+vim.api.nvim_cmd({cmd = 'filetype', args = {'plugin', 'indent', 'on'}}, {})
 vim.opt.list = true
 vim.opt.listchars = {trail = '~', lead = '·', tab = ' ', eol = '↲'}
 vim.opt.history = 500
