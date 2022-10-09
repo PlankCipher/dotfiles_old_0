@@ -159,12 +159,12 @@ EOF
   install_et
 }
 
-install_doom_emacs () {
+install_neovim () {
   cat <<EOF
 
 ###################################################
 ###                                             ###
-###            INSTALLING DOOM EMACS            ###
+###              INSTALLING NEOVIM              ###
 ###                                             ###
 ###################################################
 
@@ -173,7 +173,8 @@ EOF
   yay -S fzf ripgrep the_silver_searcher fd
   sudo pacman -S aspell aspell-en
 
-  yarn global add vscode-langservers-extracted typescript typescript-language-server emmet-ls prettier @fsouza/prettierd PlankCipher/livedown
+  yarn global add vscode-langservers-extracted typescript typescript-language-server emmet-ls prettier @fsouza/prettierd pyright
+  pip install yapf
 
   ## Install Hack Nerd Font
   mkdir -p $HOME/Downloads/Compressed/
@@ -181,12 +182,7 @@ EOF
   sudo unzip $HOME/Downloads/Compressed/hack_nerd_font.zip -d /usr/share/fonts/TTF/
   rm -rf $HOME/Downloads/Compressed
 
-  copy_files_and_create_dirs
-
-  sudo pacman -S emacs-nativecomp
-
-  git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d
-  ~/.emacs.d/bin/doom install
+  sudo pacman -S neovim
 }
 
 install_mpd () {
@@ -352,7 +348,7 @@ install_other_dependencies () {
 
 EOF
 
-  yay -S scrot feh vlc zathura zathura-pdf-mupdf ueberzug brave-bin python-pip python zip unzip bat freetube-bin libxft-bgra imagemagick i3lock fuse dell-g5se-fanctl
+  yay -S scrot feh vlc zathura zathura-pdf-mupdf ueberzug brave-bin python python-pip zip unzip bat freetube-bin libxft-bgra imagemagick i3lock fuse dell-g5se-fanctl
 
   # Thunderbird
   sudo pacman -S thunderbird
@@ -361,7 +357,7 @@ EOF
   install_ranger
   install_zsh_and_ohmyzsh
   install_dev_stuff
-  install_doom_emacs
+  install_neovim
   install_kabmat
   install_boomer
 }

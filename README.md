@@ -95,7 +95,6 @@ In all what follows:
 | $APPS_MOD+f                 | Launch FreeTube                                                                  |
 | $APPS_MOD+w                 | Launch nmtui                                                                     |
 | $APPS_MOD+z                 | Launch [boomer](https://github.com/tsoding/boomer)                               |
-| $APPS_MOD+d                 | Launch Emacs                                                                     |
 | $WORKSPACES_MOD+[0-9]       | Switch to corresponding workspace                                                |
 | $WORKSPACES_MOD+Shift+[0-9] | Move focused window to corresponding workspace                                   |
 

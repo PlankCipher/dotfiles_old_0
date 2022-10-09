@@ -34,4 +34,4 @@ display_bitrate = yes
 regular_expressions = extended
 lines_scrolled = 2
 empty_tag_marker =
-external_editor = emacs
+external_editor = nvim
