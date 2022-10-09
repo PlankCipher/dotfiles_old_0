@@ -1,5 +1,6 @@
 local telescope = require('telescope')
 local themes = require('telescope.themes')
+local actions = require('telescope.actions')
 
 telescope.setup({
   defaults = {
@@ -28,6 +29,11 @@ telescope.setup({
       '--glob', '!node_modules',
       '--glob', '!.git',
       '--glob', '!LICENSE',
+    },
+    mappings = {
+      i = {
+        ["<c-k>"] = actions.close
+      },
     },
   },
   pickers = {
