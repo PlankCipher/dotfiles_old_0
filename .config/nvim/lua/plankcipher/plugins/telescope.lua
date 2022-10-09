@@ -1,6 +1,39 @@
 local telescope = require('telescope')
 local themes = require('telescope.themes')
 local actions = require('telescope.actions')
+local action_state = require('telescope.actions.state')
+
+local custom_actions = {}
+
+function custom_actions._multiopen(prompt_bufnr, open_cmd)
+  local picker = action_state.get_current_picker(prompt_bufnr)
+  local num_selections = #picker:get_multi_selection()
+
+  if not num_selections or num_selections <= 1 then
+    actions.add_selection(prompt_bufnr)
+  end
+  actions.send_selected_to_qflist(prompt_bufnr)
+
+  local initial_bufnr = vim.api.nvim_get_current_buf()
+
+  vim.cmd("silent cfdo " .. open_cmd)
+
+  if vim.api.nvim_buf_get_name(initial_bufnr) == '' then
+    vim.api.nvim_buf_delete(initial_bufnr, {})
+  end
+end
+
+function custom_actions.multi_selection_open(prompt_bufnr)
+  custom_actions._multiopen(prompt_bufnr, "edit")
+end
+
+function custom_actions.multi_selection_open_vsplit(prompt_bufnr)
+  custom_actions._multiopen(prompt_bufnr, "vsplit")
+end
+
+function custom_actions.multi_selection_open_split(prompt_bufnr)
+  custom_actions._multiopen(prompt_bufnr, "split")
+end
 
 telescope.setup({
   defaults = {
@@ -32,7 +65,10 @@ telescope.setup({
     },
     mappings = {
       i = {
-        ["<c-k>"] = actions.close
+        ['<C-k>'] = actions.close,
+        ['<CR>'] = custom_actions.multi_selection_open,
+        ['<C-v>'] = custom_actions.multi_selection_open_vsplit,
+        ['<C-s>'] = custom_actions.multi_selection_open_split,
       },
     },
   },
@@ -44,6 +80,18 @@ telescope.setup({
       theme = 'dropdown',
       layout_config = {
         height = 0.5,
+      },
+      mappings = {
+        i = {
+          ['<CR>'] = actions.select_default,
+        },
+      },
+    },
+    man_pages = {
+      mappings = {
+        i = {
+          ['<CR>'] = actions.select_default,
+        },
       },
     },
   },
