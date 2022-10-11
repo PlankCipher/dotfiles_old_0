@@ -39,6 +39,14 @@ function custom_actions.reset_prompt(prompt_bufnr)
   action_state.get_current_picker(prompt_bufnr):reset_prompt()
 end
 
+local multi_selection_i_mappings = {
+  i = {
+    ['<CR>'] = custom_actions.multi_selection_open,
+    ['<C-v>'] = custom_actions.multi_selection_open_vsplit,
+    ['<C-s>'] = custom_actions.multi_selection_open_split,
+  }
+}
+
 telescope.setup({
   defaults = {
     layout_config = {
@@ -70,9 +78,6 @@ telescope.setup({
     mappings = {
       i = {
         ['<Esc>'] = actions.close,
-        ['<CR>'] = custom_actions.multi_selection_open,
-        ['<C-v>'] = custom_actions.multi_selection_open_vsplit,
-        ['<C-s>'] = custom_actions.multi_selection_open_split,
         ['<C-u>'] = custom_actions.reset_prompt,
         ['<C-k>'] = actions.preview_scrolling_up,
         ['<C-j>'] = actions.preview_scrolling_down,
@@ -88,19 +93,16 @@ telescope.setup({
       layout_config = {
         height = 0.5,
       },
-      mappings = {
-        i = {
-          ['<CR>'] = actions.select_default,
-        },
-      },
     },
-    man_pages = {
-      mappings = {
-        i = {
-          ['<CR>'] = actions.select_default,
-        },
-      },
-    },
+    find_files = {mappings = multi_selection_i_mappings},
+    live_grep = {mappings = multi_selection_i_mappings},
+    buffers = {mappings = multi_selection_i_mappings},
+    oldfiles = {mappings = multi_selection_i_mappings},
+    quickfix = {mappings = multi_selection_i_mappings},
+    loclist = {mappings = multi_selection_i_mappings},
+    git_status = {mappings = multi_selection_i_mappings},
+    lsp_definitions = {mappings = multi_selection_i_mappings},
+    lsp_references = {mappings = multi_selection_i_mappings},
   },
   extensions = {
     ['ui-select'] = {
