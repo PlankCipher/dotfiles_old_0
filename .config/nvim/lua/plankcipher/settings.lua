@@ -45,7 +45,7 @@ vim.opt.spelloptions = 'camel'
 vim.opt.spellcapcheck = ''
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.cursorline = true
-vim.opt.mousemodel = 'extend'
+vim.opt.mouse = ''
 
 vim.api.nvim_create_autocmd({'FocusGained', 'BufEnter', 'CursorHold'}, {
   pattern = '*',
