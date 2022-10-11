@@ -14,6 +14,7 @@ end
 hl('Normal', {ctermfg = 223, ctermbg = 'None', fg = '#ebdbb2', bg = 'None'})
 hl('SignColumn', {ctermbg = 'None', bg = 'None'})
 hl('VertSplit', {ctermfg = 241, ctermbg = 'None', fg = '#665c54', bg = 'None'})
+hl('markdownError', {link = 'None'})
 
 hl('CursorLineNr', {ctermfg = 214, ctermbg = 'None', fg = '#fabd2f', bg = 'None'})
 hl('CursorLine', {ctermbg = 238, bg = '#444444'})
