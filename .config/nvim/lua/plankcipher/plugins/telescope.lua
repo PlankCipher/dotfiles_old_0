@@ -35,6 +35,10 @@ function custom_actions.multi_selection_open_split(prompt_bufnr)
   custom_actions._multiopen(prompt_bufnr, "split")
 end
 
+function custom_actions.reset_prompt(prompt_bufnr)
+  action_state.get_current_picker(prompt_bufnr):reset_prompt()
+end
+
 telescope.setup({
   defaults = {
     layout_config = {
@@ -65,10 +69,13 @@ telescope.setup({
     },
     mappings = {
       i = {
-        ['<C-k>'] = actions.close,
+        ['<Esc>'] = actions.close,
         ['<CR>'] = custom_actions.multi_selection_open,
         ['<C-v>'] = custom_actions.multi_selection_open_vsplit,
         ['<C-s>'] = custom_actions.multi_selection_open_split,
+        ['<C-u>'] = custom_actions.reset_prompt,
+        ['<C-k>'] = actions.preview_scrolling_up,
+        ['<C-j>'] = actions.preview_scrolling_down,
       },
     },
   },
