@@ -76,4 +76,18 @@ require('lualine').setup({
     },
     lualine_x = {},
   },
+  tabline = {
+    lualine_a = {
+      {
+        'buffers',
+        symbols = {
+          modified = ' ',
+          alternate_file = '#',
+          directory = '',
+        },
+        mode = 2,
+        max_length = vim.o.columns,
+      }
+    },
+  }
 })
