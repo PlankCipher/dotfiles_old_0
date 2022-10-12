@@ -86,7 +86,8 @@ telescope.setup({
   },
   pickers = {
     find_files = {
-      find_command = {'rg', '--files', '--hidden', '--glob', '!node_modules', '--glob', '!.git'}
+      find_command = {'rg', '--files', '--hidden', '--glob', '!node_modules', '--glob', '!.git'},
+      mappings = multi_selection_i_mappings,
     },
     spell_suggest = {
       theme = 'dropdown',
@@ -94,7 +95,6 @@ telescope.setup({
         height = 0.5,
       },
     },
-    find_files = {mappings = multi_selection_i_mappings},
     live_grep = {mappings = multi_selection_i_mappings},
     buffers = {mappings = multi_selection_i_mappings},
     oldfiles = {mappings = multi_selection_i_mappings},
