@@ -33,6 +33,7 @@ require('lualine').setup({
       {
         'diff',
         padding = {left = 0, right = 1},
+        symbols = {added = ' ', modified = ' ', removed = ' '},
       }
     },
     lualine_c = {
