@@ -44,10 +44,10 @@ hl('GitSignsAdd', {fg='#b8bb26', bg='#b8bb26'})
 hl('GitSignsChange', {fg='#8ec07c', bg='#8ec07c'})
 hl('GitSignsDelete', {fg='#fb4934', bg='#fb4934'})
 
-hl('DiagnosticVirtualTextError', {ctermfg = 1, fg = '#ff0000', bg = '#561819'})
-hl('DiagnosticVirtualTextHint', {ctermfg = 7, fg = '#d3d3d3', bg = '#4b4d4e'})
-hl('DiagnosticVirtualTextWarn', {ctermfg = 3, fg = '#ffa500', bg = '#564119'})
-hl('DiagnosticVirtualTextInfo', {ctermfg = 4, fg = '#add8e6', bg = '#414e52'})
+hl('DiagnosticVirtualTextError', {ctermfg = 1, fg = '#ff0000', bg = '#581818'})
+hl('DiagnosticVirtualTextHint', {ctermfg = 7, fg = '#d3d3d3', bg = '#4c4f4f'})
+hl('DiagnosticVirtualTextWarn', {ctermfg = 3, fg = '#ffa500', bg = '#584318'})
+hl('DiagnosticVirtualTextInfo', {ctermfg = 4, fg = '#add8e6', bg = '#425054'})
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
