@@ -8,9 +8,9 @@
 
 ![lock_screen](./images/lock_screen.png)
 
-![Neovim_dashbaord](./images/nvim_dashboard.png)
-
 ![Neovim_installation_script](./images/nvim_installation_script.png)
+
+![Neovim_cpp_file](./images/nvim_cpp_code.png)
 
 ## What's going on?!
 
@@ -29,7 +29,7 @@
 
 ### Arch
 
-Got you covered. Just clone this repo (including its submodules => `git clone --recurse-submodules https://github.com/PlankCipher/dotfiles)` and run `spice_it_up.sh` on a fresh Arch install to get the exact same thing as me. It should theoretically work on a non-fresh install, but I did not test that out.
+Got you covered. Just clone this repo (including its submodules => `git clone --recurse-submodules https://github.com/PlankCipher/dotfiles`) and run `spice_it_up.sh` on a fresh Arch install to get the exact same thing as me. It should theoretically work on a non-fresh install, but I did not test that out.
 
 > **Note**: You may want to take a look at the script first.
 
@@ -91,7 +91,7 @@ In all what follows:
 | $APPS_MOD+e                 | Launch file manager (i.e. `ranger`)                                              |
 | $APPS_MOD+s                 | Launch screenshot tool (i.e. `scrot`)                                            |
 | $APPS_MOD+m                 | Launch music player (i.e. `ncmpcpp`)                                             |
-| $APPS_MOD+t                 | Launch/Toggle [kabmat](https://github.com/PlankCipher/kabmat) in scratchpad mode |
+| $APPS_MOD+k                 | Launch/Toggle [kabmat](https://github.com/PlankCipher/kabmat) in scratchpad mode |
 | $APPS_MOD+f                 | Launch FreeTube                                                                  |
 | $APPS_MOD+w                 | Launch nmtui                                                                     |
 | $APPS_MOD+z                 | Launch [boomer](https://github.com/tsoding/boomer)                               |
@@ -107,7 +107,7 @@ In all what follows:
 |   3    | web browsing            | brave and Tor                          |
 |   4    | music players           | ncmpcpp                                |
 |   5    | other media (video...)  | vlc and FreeTube                       |
-|   6    | documents               | zathura, and libreoffice               |
-|   7    | chatting                | none                                   |
+|   6    | documents               | zathura and libreoffice                |
+|   7    | chat                    | none                                   |
 |   8    | mail                    | thunderbird                            |
 |   9    | general                 | none                                   |
