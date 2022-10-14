@@ -68,8 +68,10 @@ function zle-keymap-select {
 }
 zle -N zle-keymap-select
 
-# Use beam shape cursor on startup
-echo -ne '\e[5 q'
-preexec() { echo -ne '\e[5 q' ;} # and for each new prompt.
+# Use beam cursor shape for each new prompt
+_fix_cursor() {
+   echo -ne '\e[5 q'
+}
+precmd_functions+=(_fix_cursor)
 
 colorscript --random
