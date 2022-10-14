@@ -7,7 +7,9 @@ vim.api.nvim_create_autocmd('QuickFixCmdPost', {
 })
 
 -- Make (compile) and navigate errors/warnings
-vim.keymap.set('n', '<leader>,',  ':set makeprg=')
+vim.keymap.set('n', '<leader>,',  function()
+  vim.opt.makeprg = vim.fn.input('makeprg: ')
+end)
 vim.keymap.set('n', '<leader>,,', ':make<CR>')
 vim.keymap.set('n', '<leader>,p', ':cp<CR>')
 vim.keymap.set('n', '<leader>,n', ':cn<CR>')
