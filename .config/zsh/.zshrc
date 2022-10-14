@@ -36,12 +36,6 @@ bindkey -M menuselect 'right' vi-forward-char
 # Fix backspace bug when switching modes
 bindkey "^?" backward-delete-char
 
-# Use block shape cursor for all modes
-function zle-keymap-select {
-  echo -ne '\e[1 q'
-}
-zle -N zle-keymap-select
-
 # ci", ci', ci`, di", etc
 autoload -U select-quoted
 zle -N select-quoted
@@ -60,7 +54,22 @@ for m in visual viopp; do
   done
 done
 
-# Use block shape cursor on startup.
-echo -ne '\e[1 q'
+# Change cursor shape for different vi modes.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+
+# Use beam shape cursor on startup
+echo -ne '\e[5 q'
+preexec() { echo -ne '\e[5 q' ;} # and for each new prompt.
 
 colorscript --random
