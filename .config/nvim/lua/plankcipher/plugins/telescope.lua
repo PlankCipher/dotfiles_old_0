@@ -61,7 +61,7 @@ telescope.setup({
       },
     },
     sorting_strategy = 'ascending',
-    prompt_prefix = '',
+    prompt_prefix = '> ',
     vimgrep_arguments = {
       'rg',
       '--color=never',

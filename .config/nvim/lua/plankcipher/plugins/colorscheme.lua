@@ -29,6 +29,10 @@ vim.api.nvim_create_autocmd('WinEnter', {
   pattern = '*',
   command = [[silent match TrailingWhitespace /\s\+$/]],
 })
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'TelescopePrompt',
+  command = 'match none',
+})
 
 hl('ColorColumn', {ctermbg = 226, bg = '#555555'})
 hl('Todo', {ctermfg = 234, ctermbg = 208, fg = '#1d2021', bg = '#fe8019', bold = true})
