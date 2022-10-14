@@ -58,6 +58,7 @@ return require('packer').startup({function(use)
   use({'nvim-telescope/telescope-ui-select.nvim'})
 
   use('tpope/vim-surround')
+  use('mg979/vim-visual-multi')
 
   if packer_bootstrap then
     require('packer').sync()
