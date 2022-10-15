@@ -4,7 +4,8 @@ require('lualine').setup({
     component_separators = {left = '', right = ''},
     section_separators = {left = '', right = ''},
     always_divide_middle = false,
-    refresh = {statusline = 300}
+    refresh = {statusline = 300},
+    globalstatus = true,
   },
   sections = {
     lualine_a = {
