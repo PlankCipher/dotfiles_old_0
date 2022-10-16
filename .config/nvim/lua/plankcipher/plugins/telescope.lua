@@ -54,6 +54,7 @@ telescope.setup({
         width = 0.9,
         height = 0.8,
         preview_cutoff = 120,
+        preview_width = 0.58,
         prompt_position = 'top',
       },
       vertical = {
