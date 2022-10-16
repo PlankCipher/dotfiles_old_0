@@ -27,12 +27,11 @@ hl('TrailingWhitespace', {ctermfg = 'white', ctermbg = 'red', fg = '#ffffff', bg
 vim.api.nvim_cmd({cmd = 'match', args = {'TrailingWhitespace', [[/\s\+$/]]}}, {})
 vim.api.nvim_create_autocmd('WinEnter', {
   pattern = '*',
-  callback = function()
-    local ft = vim.bo.ft
-    if ft ~= '' and ft ~= 'TelescopePrompt' and ft ~= 'help' then
-      vim.api.nvim_cmd({cmd = 'match', args = {'TrailingWhitespace', [[/\s\+$/]]}}, {})
-    end
-  end,
+  command = [[silent match TrailingWhitespace /\s\+$/]],
+})
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'TelescopePrompt',
+  command = 'match none',
 })
 
 hl('ColorColumn', {ctermbg = 226, bg = '#555555'})
