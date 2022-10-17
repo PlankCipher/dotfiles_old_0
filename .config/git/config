@@ -6,6 +6,6 @@
 	diffFilter = /usr/share/git/diff-highlight/diff-highlight | less
 [color "diff-highlight"]
 	oldNormal = red
-	oldHighlight = normal red bold
+	oldHighlight = normal red
 	newNormal = green
-	newHighlight = normal green bold
+	newHighlight = normal green
