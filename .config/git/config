@@ -1,2 +1,11 @@
 [status]
 	showuntrackedfiles = all
+[core]
+	pager = /usr/share/git/diff-highlight/diff-highlight | less
+[interactive]
+	diffFilter = /usr/share/git/diff-highlight/diff-highlight | less
+[color "diff-highlight"]
+	oldNormal = red
+	oldHighlight = normal red bold
+	newNormal = green
+	newHighlight = normal green bold
