@@ -39,8 +39,7 @@ local lsp_flags = {
   debounce_text_changes = 100,
 }
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local servers = {'html', 'cssls', 'emmet_ls', 'tsserver', 'clangd', 'pyright'}
 for _, lsp in ipairs(servers) do
