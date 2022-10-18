@@ -12,6 +12,7 @@ require('plankcipher.plugins.goto_preview')
 require('plankcipher.plugins.markdown_preview')
 require('plankcipher.plugins.telescope')
 require('plankcipher.plugins.visual_multi')
+require('plankcipher.plugins.comment')
 require('plankcipher.plugins.formatting.formatting')
 
 -- Keymappings

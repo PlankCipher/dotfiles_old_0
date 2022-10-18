@@ -37,10 +37,7 @@ return require('packer').startup({function(use)
   use('hrsh7th/cmp-path')
   use('rmagatti/goto-preview')
 
-  use({
-    'numToStr/Comment.nvim',
-    config = function() require('Comment').setup() end
-  })
+  use('numToStr/Comment.nvim')
 
   use({
     'iamcco/markdown-preview.nvim',
