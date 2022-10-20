@@ -37,8 +37,14 @@ vim.api.nvim_create_autocmd('FileType', {
 hl('ColorColumn', {ctermbg = 226, bg = '#555555'})
 hl('Todo', {ctermfg = 234, ctermbg = 208, fg = '#1d2021', bg = '#fe8019', bold = true})
 
-hl('NormalFloat', {ctermfg = 223, ctermbg = 239, fg = '#ebdbb2', bg = '#504945', blend = 17})
+hl('Pmenu', {ctermfg = 223, ctermbg = 'None', fg = '#ebdbb2', bg = 'None'})
+hl('NormalFloat', {ctermfg = 223, ctermbg = 'None', fg = '#ebdbb2', bg = 'None'})
 hl('FloatBorder', {link = 'NormalFloat'})
+
+hl('CmpItemAbbrMatch', {link = 'Special'})
+hl('CmpItemAbbrMatchFuzzy', {link = 'CmpItemAbbrMatch'})
+hl('CmpItemKind', {link = 'Keyword'})
+hl('CmpItemMenu', {link = 'CmpItemAbbrDeprecated'})
 
 hl('TelescopeBorder', {ctermfg = 208, fg = '#fe8019'})
 hl('TelescopeSelection', {link = 'CursorLine'})

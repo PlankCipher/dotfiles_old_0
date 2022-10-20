@@ -32,8 +32,6 @@ vim.opt.wildmode = 'longest,full'
 vim.opt.wildignore:append('*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem')
 vim.opt.wildignore:append('*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*')
 vim.opt.wildignore:append('*.swp,*~,._*')
-vim.opt.pumblend = 17
-vim.opt.winblend = 17
 vim.opt.wildoptions = 'pum'
 vim.opt.completeopt = 'menuone,noinsert,noselect'
 vim.opt.guicursor = 'n-v-sm-ve:block,i-c-ci:ver25,r-cr-o:hor20'

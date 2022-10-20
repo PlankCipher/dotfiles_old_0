@@ -81,6 +81,7 @@ cmp.setup({
     end
   },
   window = {
+    completion = {border = 'rounded'},
     documentation = {border = 'rounded'},
   },
 })
