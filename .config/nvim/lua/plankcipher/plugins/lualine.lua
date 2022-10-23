@@ -77,7 +77,12 @@ require('lualine').setup({
       },
       'filetype',
     },
-    lualine_y = {'progress'},
+    lualine_y = {
+      {
+        'progress',
+        fmt = function() return '%P/%L' end,
+      }
+    },
     lualine_z = {'location'}
   },
   inactive_sections = {
