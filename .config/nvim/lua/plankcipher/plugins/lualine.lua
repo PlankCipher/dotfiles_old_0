@@ -39,6 +39,25 @@ require('lualine').setup({
     },
     lualine_c = {
       {
+        function()
+          local buf_clients = vim.lsp.get_active_clients({bufnr = 0})
+          if #buf_clients == 0 then
+            return ''
+          end
+
+          local buf_client_names = {}
+          for _, client in pairs(buf_clients) do
+            table.insert(buf_client_names, client.name)
+          end
+
+          local unique_client_names = vim.fn.uniq(buf_client_names)
+
+          local language_servers = '[' .. table.concat(unique_client_names, ', ') .. ']'
+
+          return language_servers
+        end,
+      },
+      {
         'diagnostics',
         sources = {'nvim_lsp'},
         symbols = {
