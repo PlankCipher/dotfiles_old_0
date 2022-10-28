@@ -59,6 +59,8 @@ hl('DiagnosticVirtualTextHint', {ctermfg = 7, fg = '#d3d3d3', bg = '#4c4f4f'})
 hl('DiagnosticVirtualTextWarn', {ctermfg = 3, fg = '#ffa500', bg = '#584318'})
 hl('DiagnosticVirtualTextInfo', {ctermfg = 4, fg = '#add8e6', bg = '#425054'})
 
+hl('LspSignatureActiveParameter', {ctermfg = 109, fg = '#83a598', bold = true})
+
 vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
   callback = function(event)
