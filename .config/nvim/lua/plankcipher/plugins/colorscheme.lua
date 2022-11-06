@@ -59,6 +59,11 @@ hl('DiagnosticVirtualTextHint', {ctermfg = 7, fg = '#d3d3d3', bg = '#4c4f4f'})
 hl('DiagnosticVirtualTextWarn', {ctermfg = 3, fg = '#ffa500', bg = '#584318'})
 hl('DiagnosticVirtualTextInfo', {ctermfg = 4, fg = '#add8e6', bg = '#425054'})
 
+hl('DiagnosticUnderlineError', {sp = '#ff0000', underline = true})
+hl('DiagnosticUnderlineHint', {sp = '#d3d3d3', underline = true})
+hl('DiagnosticUnderlineWarn', {sp = '#ffa500', underline = true})
+hl('DiagnosticUnderlineInfo', {sp = '#add8e6', underline = true})
+
 hl('LspSignatureActiveParameter', {ctermfg = 109, fg = '#83a598', bold = true})
 
 vim.api.nvim_create_autocmd('TextYankPost', {
