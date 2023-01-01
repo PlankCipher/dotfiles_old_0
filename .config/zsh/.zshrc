@@ -14,6 +14,8 @@ alias cpt="cp $HOME/chamber_of_magic/test/main.cpp"
 alias deskrec="ffmpeg -framerate 25 -f x11grab -i :0.0"
 alias gd="git diff --patch --stat"
 alias gdf='git status -s | sed -E "/(^\?\?)|(^M )/d" | awk "{ print \$2 }" | fzf --preview "bat -p --color always -l diff <(git diff --patch --stat {})"'
+alias asdf="setxkbmap -layout 'us(dvorak),ara' -option grp:win_space_toggle,caps:escape"
+alias aoeu="setxkbmap -layout 'us,ara' -option grp:win_space_toggle,caps:escape"
 
 # Clear history on start and exit
 clear-history 2> /dev/null
