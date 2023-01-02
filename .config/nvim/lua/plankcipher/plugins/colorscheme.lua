@@ -64,7 +64,7 @@ hl('DiagnosticUnderlineHint', {sp = '#d3d3d3', underline = true})
 hl('DiagnosticUnderlineWarn', {sp = '#ffa500', underline = true})
 hl('DiagnosticUnderlineInfo', {sp = '#add8e6', underline = true})
 
-hl('LspSignatureActiveParameter', {ctermfg = 109, fg = '#83a598', bold = true})
+hl('LspSignatureActiveParameter', {ctermbg = 238, bg = '#444444', bold = true})
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
