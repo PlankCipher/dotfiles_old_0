@@ -27,6 +27,7 @@ vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+vim.opt.inccommand = 'split'
 vim.opt.updatetime = 100
 vim.opt.wildmode = 'longest,full'
 vim.opt.wildignore:append('*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem')
