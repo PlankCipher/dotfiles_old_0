@@ -29,10 +29,12 @@ end
 
 function custom_actions.multi_selection_open_vsplit(prompt_bufnr)
   custom_actions._multiopen(prompt_bufnr, "vsplit")
+  vim.api.nvim_cmd({cmd = 'quit', args = {}}, {})
 end
 
 function custom_actions.multi_selection_open_split(prompt_bufnr)
   custom_actions._multiopen(prompt_bufnr, "split")
+  vim.api.nvim_cmd({cmd = 'quit', args = {}}, {})
 end
 
 function custom_actions.reset_prompt(prompt_bufnr)
