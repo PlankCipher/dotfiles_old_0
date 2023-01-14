@@ -21,7 +21,7 @@
 - Terminal: [`st`](https://st.suckless.org)
 - Shell: [`zsh`](https://www.zsh.org/) with [`Oh My Zsh`](https://ohmyz.sh/)
 - Image viewer: [`feh`](https://wiki.archlinux.org/index.php/Feh)
-- Video player: [`vlc`](https://wiki.archlinux.org/index.php/VLC_media_player)
+- Video player: [`mpv`](https://mpv.io/)
 - Music player: [`mpd`](https://wiki.archlinux.org/index.php/Music_Player_Daemon) and [`ncmpcpp`](https://wiki.archlinux.org/index.php/Ncmpcpp)
 - Notifications: [`dunst`](https://wiki.archlinux.org/index.php/Dunst) and [`libnotify`](https://wiki.archlinux.org/index.php/Desktop_notifications#Libnotify)
 
@@ -106,7 +106,7 @@ In all what follows:
 |   2    | coding                  | none                                   |
 |   3    | web browsing            | brave and Tor                          |
 |   4    | music players           | ncmpcpp                                |
-|   5    | other media (video...)  | vlc and FreeTube                       |
+|   5    | other media (video...)  | mpv and FreeTube                       |
 |   6    | documents               | zathura and libreoffice                |
 |   7    | chat                    | none                                   |
 |   8    | mail                    | thunderbird                            |
