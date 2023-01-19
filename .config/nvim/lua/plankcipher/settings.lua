@@ -46,6 +46,7 @@ vim.opt.spellcapcheck = ''
 vim.opt.clipboard = 'unnamedplus'
 vim.opt.cursorline = true
 vim.opt.mouse = ''
+vim.opt.shellpipe = '2>&1| tee %s ; exit $pipestatus[1]'
 
 vim.api.nvim_create_autocmd({'FocusGained', 'BufEnter', 'CursorHold'}, {
   pattern = '*',
