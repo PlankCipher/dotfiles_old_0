@@ -1,4 +1,10 @@
-# My Arch Linux dotfiles
+<div align="center">
+  <h1>My Arch Linux dotfiles</h1>
+
+  <a href="https://ko-fi.com/Y8Y4HZ5S3" target="_blank">
+    <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Buy Me a Coffee at ko-fi.com" />
+  </a>
+</div>
 
 ## Preview
 
