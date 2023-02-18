@@ -6,3 +6,4 @@ end
 vim.keymap.set('n', '<leader>ot', function() open_terminal(true) end)
 vim.keymap.set('n', '<leader>of', function() open_terminal(true, 'ranger') end)
 vim.keymap.set('n', '<leader>or', function() open_terminal(false, 'g++ % -o %:r && ./%:r') end)
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>')
