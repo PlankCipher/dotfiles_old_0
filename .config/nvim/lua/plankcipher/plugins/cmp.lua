@@ -80,4 +80,7 @@ cmp.setup({
     completion = {border = 'rounded'},
     documentation = {border = 'rounded'},
   },
+  experimental = {
+    ghost_text = true,
+  }
 })
